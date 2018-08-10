@@ -9,7 +9,7 @@ package com.google.sites.danieltcc1.control;
  * @version 1.0.2
  * @since versão 1.0b5
  */
-class Exception_models extends Exception {
+class ModelException extends Exception {
 
 	/**
 	 * 
@@ -19,7 +19,7 @@ class Exception_models extends Exception {
 	/**
 	 * Este método serve para construir esta classe.
 	 */
-	Exception_models() {
+	ModelException() {
 	}
 
 }

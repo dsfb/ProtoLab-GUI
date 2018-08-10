@@ -11,7 +11,7 @@ package com.google.sites.danieltcc1.model;
  * @version 1.0.2
  * @since versão 1.0b1
  */
-public class Model5_maf extends Model {
+public class FifthMafModel extends Model {
 
 	// declaração e instanciação de variáveis.
 	private double[] polinomio;
@@ -28,7 +28,7 @@ public class Model5_maf extends Model {
 	 * Construtor de uma instância da classe. Aloca memória para as variáveis
 	 * (do tipo double) polinomio e polinomios.
 	 */
-	Model5_maf() {
+	FifthMafModel() {
 
 		// declaração e instanciação de variáveis.
 		polinomio = new double[coeficientes_modelo];

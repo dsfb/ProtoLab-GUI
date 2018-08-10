@@ -13,8 +13,8 @@ public class Prototype {
 
 	// declaração de objetos.
 	private Air the_air_inside_the_prototype;
-	private Universal_motor the_universal_motor_of_the_prototype;
-	private Electronic_throttle_module the_electronic_throttle_module_of_the_prototype;
+	private UniversalMotor the_universal_motor_of_the_prototype;
+	private ElectronicThrottleModule the_electronic_throttle_module_of_the_prototype;
 	private Model model_maf;
 	private Model model_map;
 
@@ -28,8 +28,8 @@ public class Prototype {
 
 		// instanciação de objetos.
 		the_air_inside_the_prototype = new Air();
-		the_universal_motor_of_the_prototype = new Universal_motor();
-		the_electronic_throttle_module_of_the_prototype = new Electronic_throttle_module();
+		the_universal_motor_of_the_prototype = new UniversalMotor();
+		the_electronic_throttle_module_of_the_prototype = new ElectronicThrottleModule();
 
 	}
 
@@ -56,15 +56,15 @@ public class Prototype {
 		// para o fluxo de massa
 		// do ar admitido.
 		if (i == 0)
-			model_maf = new Maf_ann();
+			model_maf = new AnnMafModel();
 		else if (i == 1)
-			model_maf = new Model2_maf();
+			model_maf = new SecondMafModel();
 		else if (i == 2)
-			model_maf = new Model3_maf();
+			model_maf = new ThirdMafModel();
 		else if (i == 3)
-			model_maf = new Model4_maf();
+			model_maf = new FourthMafModel();
 		else if (i == 4)
-			model_maf = new Model5_maf();
+			model_maf = new FifthMafModel();
 	}
 
 	/**
@@ -81,15 +81,15 @@ public class Prototype {
 		// para a pressão do ar
 		// admitido.
 		if (i == 0)
-			model_map = new Map_ann();
+			model_map = new AnnMapModel();
 		else if (i == 1)
-			model_map = new Model2_map();
+			model_map = new SecondMapModel();
 		else if (i == 2)
-			model_map = new Model3_map();
+			model_map = new ThirdMapModel();
 		else if (i == 3)
-			model_map = new Model4_map();
+			model_map = new FourthMapModel();
 		else if (i == 4)
-			model_map = new Model5_map();
+			model_map = new FifthMapModel();
 	}
 
 	/**
@@ -121,7 +121,7 @@ public class Prototype {
 	 * @return o objeto (do tipo Motor_universal)
 	 *         the_universal_motor_of_the_prototype.
 	 */
-	public Universal_motor getThe_universal_motor_of_the_prototype() {
+	public UniversalMotor getThe_universal_motor_of_the_prototype() {
 		return this.the_universal_motor_of_the_prototype;
 	}
 
@@ -132,7 +132,7 @@ public class Prototype {
 	 * @return o objeto (do tipo Modulo_valvula_borboleta)
 	 *         the_electronic_throttle_module_of_the_prototype.
 	 */
-	public Electronic_throttle_module getThe_electronic_throttle_module_of_the_prototype() {
+	public ElectronicThrottleModule getThe_electronic_throttle_module_of_the_prototype() {
 		return this.the_electronic_throttle_module_of_the_prototype;
 	}
 

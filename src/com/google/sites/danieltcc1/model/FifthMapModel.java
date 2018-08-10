@@ -1,8 +1,8 @@
 package com.google.sites.danieltcc1.model;
 
 /**
- * Classe que define o quarto modelo, fenomenológico, feito com polinômios do
- * terceiro grau. Esta classe recebe como entrada dois números reais, que são a
+ * Classe que define o quinto modelo, fenomenológico, feito com polinômios do
+ * quarto grau. Esta classe recebe como entrada dois números reais, que são a
  * frequência de rotação do motor universal (0-280Hz) e o fator de abertura do
  * módulo "válvula borboleta" (0-1) e fornece na saída a pressão do ar admitido
  * (kPa).
@@ -11,7 +11,7 @@ package com.google.sites.danieltcc1.model;
  * @version 1.0.2
  * @since versão 1.0b1
  */
-public class Model4_map extends Model {
+public class FifthMapModel extends Model {
 
 	// declaração e instanciação de variáveis.
 	private double[] polinomio;
@@ -20,7 +20,7 @@ public class Model4_map extends Model {
 
 	private double coef;
 
-	private final int coeficientes_modelo = 4;
+	private final int coeficientes_modelo = 5;
 
 	private final int numero_termos_polinomio = 7;
 
@@ -28,43 +28,51 @@ public class Model4_map extends Model {
 	 * Construtor de uma instância da classe. Aloca memória para as variáveis
 	 * (do tipo double) polinomio e polinomios.
 	 */
-	Model4_map() {
+	FifthMapModel() {
 
 		// declaração e instanciação de variáveis.
 		polinomio = new double[coeficientes_modelo];
 		polinomios = new double[coeficientes_modelo][numero_termos_polinomio];
 
-		polinomios[3][0] = 0.020107;
-		polinomios[3][1] = 0.77786;
-		polinomios[3][2] = -15.386;
-		polinomios[3][3] = 92.714;
-		polinomios[3][4] = -251.26;
-		polinomios[3][5] = 317.84;
-		polinomios[3][6] = -152.55;
+		polinomios[4][0] = -0.034758;
+		polinomios[4][1] = 1.7105;
+		polinomios[4][2] = -23.586;
+		polinomios[4][3] = 132.69;
+		polinomios[4][4] = -357.68;
+		polinomios[4][5] = 457.91;
+		polinomios[4][6] = -223.08;
 
-		polinomios[2][0] = -0.0061455;
-		polinomios[2][1] = -0.55036;
-		polinomios[2][2] = 9.4695;
-		polinomios[2][3] = -54.665;
-		polinomios[2][4] = 144.49;
-		polinomios[2][5] = -179.32;
-		polinomios[2][6] = 84.676;
+		polinomios[3][0] = 0.021475;
+		polinomios[3][1] = -0.88013;
+		polinomios[3][2] = 11.67;
+		polinomios[3][3] = -65.037;
+		polinomios[3][4] = 175.18;
+		polinomios[3][5] = -224.65;
+		polinomios[3][6] = 109.67;
 
-		polinomios[1][0] = 0.17434;
-		polinomios[1][1] = 7.6327;
-		polinomios[1][2] = -127.38;
-		polinomios[1][3] = 713.17;
-		polinomios[1][4] = -1844.4;
-		polinomios[1][5] = 2250.4;
-		polinomios[1][6] = -1047.7;
+		polinomios[2][0] = -0.040447;
+		polinomios[2][1] = 1.1377;
+		polinomios[2][2] = -13.806;
+		polinomios[2][3] = 76.282;
+		polinomios[2][4] = -208.49;
+		polinomios[2][5] = 272.57;
+		polinomios[2][6] = -135.48;
 
-		polinomios[0][0] = 2.9216;
-		polinomios[0][1] = -19.303;
-		polinomios[0][2] = -63.452;
-		polinomios[0][3] = 574.08;
-		polinomios[0][4] = -703.98;
-		polinomios[0][5] = -692.95;
-		polinomios[0][6] = 1119.5;
+		polinomios[1][0] = 0.37177;
+		polinomios[1][1] = -2.0833;
+		polinomios[1][2] = 6.5855;
+		polinomios[1][3] = -40.529;
+		polinomios[1][4] = 187.29;
+		polinomios[1][5] = -350.57;
+		polinomios[1][6] = 219.45;
+
+		polinomios[0][0] = 1.0129;
+		polinomios[0][1] = 74.625;
+		polinomios[0][2] = -1358.6;
+		polinomios[0][3] = 7860.4;
+		polinomios[0][4] = -20345;
+		polinomios[0][5] = 24452;
+		polinomios[0][6] = -11131;
 
 	}
 
@@ -88,7 +96,8 @@ public class Model4_map extends Model {
 						* Math.pow(getInput2(), c);
 
 		polinomio[2] /= 10;
-		polinomio[3] /= 10000;
+		polinomio[3] /= 1000;
+		polinomio[4] /= 1000000;
 
 		for (int c = 0; c < coeficientes_modelo; c++) {
 			coef = coef + polinomio[c] * Math.pow(getInput1(), c);

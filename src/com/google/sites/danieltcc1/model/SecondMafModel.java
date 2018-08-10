@@ -11,7 +11,7 @@ package com.google.sites.danieltcc1.model;
  * @version 1.0.2
  * @since versão 1.0b1
  */
-public class Model2_maf extends Model {
+public class SecondMafModel extends Model {
 
 	// declaração e instanciação de variáveis.
 	private double polinomio[] = { 0.059881, 1.01, 2.3754, -14.459, 26.312,

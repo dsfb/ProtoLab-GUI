@@ -8,7 +8,7 @@ package com.google.sites.danieltcc1.model;
  * @version 1.0.2
  * @since versão 1.0b1
  */
-public class Electronic_throttle_module {
+public class ElectronicThrottleModule {
 
 	// declaração e instanciação de variáveis.
 	private double current_opening_angle_in_radians;

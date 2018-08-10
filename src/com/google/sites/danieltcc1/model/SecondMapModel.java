@@ -11,7 +11,7 @@ package com.google.sites.danieltcc1.model;
  * @version 1.0.2
  * @since versão 1.0b1
  */
-public class Model2_map extends Model {
+public class SecondMapModel extends Model {
 
 	private double polinomio_x[] = { 0.14736, -2.1649, 26.744, -148.47, 388.24,
 			-477.03, 222.47 };

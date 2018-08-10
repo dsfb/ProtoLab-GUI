@@ -1,7 +1,6 @@
 package com.google.sites.danieltcc1.vision;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.util.*;

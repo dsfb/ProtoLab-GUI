@@ -11,7 +11,7 @@ package com.google.sites.danieltcc1.model;
  * @version 1.0.1
  * @since versão 1.0b1
  */
-class Maf_ann extends Model {
+class AnnMafModel extends Model {
 
 	// declaração e instanciação de variáveis.
 	private double[] mainWeights = { 1.059302583928928, -1.031676261948852,
@@ -281,7 +281,7 @@ class Maf_ann extends Model {
 	 * as variáveis hiddenLayer1outputs, hiddenLayer2outputs e
 	 * hiddenLayer3outputs.
 	 */
-	Maf_ann() {
+	AnnMafModel() {
 
 		// instanciação de variáveis.
 		hiddenLayer1outputs = new double[32];

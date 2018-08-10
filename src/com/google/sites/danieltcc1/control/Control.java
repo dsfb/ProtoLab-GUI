@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 public class Control implements ActionListener {
 	private Vision vision;
 
-	private A_scientific_experiment_with_the_prototype a_scientific_experiment_with_the_prototype;
+	private PrototypeScientificExperiment a_scientific_experiment_with_the_prototype;
 
 	private int choice_model;
 
@@ -20,7 +20,7 @@ public class Control implements ActionListener {
 	public Control(Vision vision) {
 		this.vision = vision;
 		vision.configureListener(this);
-		a_scientific_experiment_with_the_prototype = new A_scientific_experiment_with_the_prototype();
+		a_scientific_experiment_with_the_prototype = new PrototypeScientificExperiment();
 
 		// fixação de valor.
 		choice_model = -1;

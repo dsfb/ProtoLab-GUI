@@ -1,8 +1,8 @@
 package com.google.sites.danieltcc1.model;
 
 /**
- * Classe que define o quarto modelo, fenomenológico, feito com polinômios do
- * terceiro grau. Esta classe recebe como entrada dois números reais, que são a
+ * Classe que define o terceiro modelo, fenomenológico, feito com polinômios do
+ * segundo grau. Esta classe recebe como entrada dois números reais, que são a
  * frequência de rotação do motor universal (0-280Hz) e o fator de abertura do
  * módulo "válvula borboleta" (0-1) e fornece na saída o fluxo da massa do ar
  * admitido (kg/h).
@@ -11,7 +11,7 @@ package com.google.sites.danieltcc1.model;
  * @version 1.0.2
  * @since versão 1.0b1
  */
-public class Model4_maf extends Model {
+public class ThirdMafModel extends Model {
 
 	// declaração e instanciação de variáveis.
 	private double[] polinomio;
@@ -20,7 +20,7 @@ public class Model4_maf extends Model {
 
 	private double coef;
 
-	private final int coeficientes_modelo = 3;
+	private final int coeficientes_modelo = 2;
 
 	private final int numero_termos_polinomio = 7;
 
@@ -28,35 +28,27 @@ public class Model4_maf extends Model {
 	 * Construtor de uma instância da classe. Aloca memória para as variáveis
 	 * (do tipo double) polinomio e polinomios.
 	 */
-	Model4_maf() {
+	ThirdMafModel() {
 
 		// declaração e instanciação de variáveis.
 		polinomio = new double[coeficientes_modelo];
 		polinomios = new double[coeficientes_modelo][numero_termos_polinomio];
 
-		polinomios[0][0] = 0.095604;
-		polinomios[0][1] = 2.1176;
-		polinomios[0][2] = -12.096;
-		polinomios[0][3] = 49.117;
-		polinomios[0][4] = -93.314;
-		polinomios[0][5] = 79.241;
-		polinomios[0][6] = -24.576;
+		polinomios[0][0] = 0.093263;
+		polinomios[0][1] = 1.3979;
+		polinomios[0][2] = -0.34323;
+		polinomios[0][3] = -2.09;
+		polinomios[0][4] = 1.7086;
+		polinomios[0][5] = 0.2118;
+		polinomios[0][6] = -0.35086;
 
-		polinomios[1][0] = -0.0018066;
-		polinomios[1][1] = -0.10087;
-		polinomios[1][2] = 1.4808;
-		polinomios[1][3] = -6.4761;
-		polinomios[1][4] = 12.093;
-		polinomios[1][5] = -10.118;
-		polinomios[1][6] = 3.1211;
-
-		polinomios[2][0] = 0.00070061;
-		polinomios[2][1] = 0.21538;
-		polinomios[2][2] = -3.5172;
-		polinomios[2][3] = 15.325;
-		polinomios[2][4] = -28.437;
-		polinomios[2][5] = 23.65;
-		polinomios[2][6] = -7.2496;
+		polinomios[1][0] = -0.0015366;
+		polinomios[1][1] = -0.017853;
+		polinomios[1][2] = 0.12513;
+		polinomios[1][3] = -0.56938;
+		polinomios[1][4] = 1.1326;
+		polinomios[1][5] = -1.0026;
+		polinomios[1][6] = 0.32679;
 
 	}
 
@@ -79,8 +71,7 @@ public class Model4_maf extends Model {
 				polinomio[i] = polinomio[i] + polinomios[i][c]
 						* Math.pow(getInput2(), c);
 
-		polinomio[1] /= 10;
-		polinomio[2] /= 10000;
+		polinomio[1] = polinomio[1] / 10;
 
 		for (int c = 0; c < coeficientes_modelo; c++) {
 			coef = coef + polinomio[c] * Math.pow(getInput1(), c + 1);

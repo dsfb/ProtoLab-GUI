@@ -8,7 +8,7 @@ package com.google.sites.danieltcc1.model;
  * @version 1.0.1
  * @since versão 1.0b1
  */
-public class Universal_motor {
+public class UniversalMotor {
 
 	// declaração e instanciação de variáveis.
 	private double rotation_frequency_Hz;

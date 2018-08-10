@@ -8,7 +8,7 @@ package com.google.sites.danieltcc1.model;
  * @version 1.0.2
  * @since versão 1.0b1
  */
-public class A_scientific_experiment_with_the_prototype {
+public class PrototypeScientificExperiment {
 
 	// declaração de objetos.
 	private Prototype my_prototype;
@@ -19,7 +19,7 @@ public class A_scientific_experiment_with_the_prototype {
 	 * 
 	 * Constrói uma instância da classe Prototipo e uma instância da classe Ar.
 	 */
-	public A_scientific_experiment_with_the_prototype() {
+	public PrototypeScientificExperiment() {
 
 		my_prototype = new Prototype();
 		ambient_air = new Air();
