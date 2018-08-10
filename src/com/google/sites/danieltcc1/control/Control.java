@@ -1,7 +1,7 @@
 package com.google.sites.danieltcc1.control;
 
 import com.google.sites.danieltcc1.model.*;
-import com.google.sites.danieltcc1.vision.*;
+import com.google.sites.danieltcc1.view.*;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;

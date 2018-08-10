@@ -1,4 +1,4 @@
-package com.google.sites.danieltcc1.vision;
+package com.google.sites.danieltcc1.view;
 
 import javax.swing.JFrame;
 
