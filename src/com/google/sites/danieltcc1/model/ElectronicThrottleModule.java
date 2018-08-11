@@ -11,21 +11,21 @@ package com.google.sites.danieltcc1.model;
 public class ElectronicThrottleModule {
 
 	// declaração e instanciação de variáveis.
-	private double current_opening_angle_in_radians;
-	private final double maximum_opening_angle_in_radians = 1.5707963267948966192313216916398;
-	private final double minimum_opening_angle_in_radians = 0.0;
+	private double currentOpeningAngleInRadians;
+	private final double maximumOpeningAngleInRadians = 1.5707963267948966192313216916398;
+	private final double minimumOpeningAngleInRadians = 0.0;
 
-	private double current_opening_angle_in_degrees;
-	private final double maximum_opening_angle_in_degrees = 90.0;
-	private final double minimum_opening_angle_in_degrees = 0.0;
+	private double currentOpeningAngleInDegrees;
+	private final double maximumOpeningAngleInDegrees = 90.0;
+	private final double minimumOpeningAngleInDegrees = 0.0;
 
-	private double current_difference_of_electrical_potential;
-	private final double maximum_difference_of_electrical_potential = 4.55;
-	private final double minimum_difference_of_electrical_potential = 0.95;
+	private double currentDifferenceOfElectricalPotential;
+	private final double maximumDifferenceOfElectricalPotential = 4.55;
+	private final double minimumDifferenceOfElectricalPotential = 0.95;
 
-	private double current_opening_factor;
-	private final double maximum_opening_factor = 1.0;
-	private final double minimum_opening_factor = 0.0;
+	private double currentOpeningFactor;
+	private final double maximumOpeningFactor = 1.0;
+	private final double minimumOpeningFactor = 0.0;
 
 	/**
 	 * Este método fixa a tensão elétrica equivalente à situação de abertura do
@@ -41,11 +41,11 @@ public class ElectronicThrottleModule {
 	 */
 	public void setCurrent_difference_of_electrical_potential(
 			double current_difference_of_electrical_potential) {
-		this.current_difference_of_electrical_potential = current_difference_of_electrical_potential;
-		this.current_opening_factor = (this.current_difference_of_electrical_potential - minimum_difference_of_electrical_potential)
-				/ (maximum_difference_of_electrical_potential - minimum_difference_of_electrical_potential);
-		this.current_opening_angle_in_degrees = this.current_opening_factor * 90;
-		this.current_opening_angle_in_radians = this.current_opening_factor
+		this.currentDifferenceOfElectricalPotential = current_difference_of_electrical_potential;
+		this.currentOpeningFactor = (this.currentDifferenceOfElectricalPotential - minimumDifferenceOfElectricalPotential)
+				/ (maximumDifferenceOfElectricalPotential - minimumDifferenceOfElectricalPotential);
+		this.currentOpeningAngleInDegrees = this.currentOpeningFactor * 90;
+		this.currentOpeningAngleInRadians = this.currentOpeningFactor
 				* Math.PI / 2;
 	}
 
@@ -58,7 +58,7 @@ public class ElectronicThrottleModule {
 	 *         current_difference_of_electrical_potential.
 	 */
 	public double getCurrent_difference_of_electrical_potential() {
-		return this.current_difference_of_electrical_potential;
+		return this.currentDifferenceOfElectricalPotential;
 	}
 
 	/**
@@ -75,17 +75,17 @@ public class ElectronicThrottleModule {
 	 */
 	public void setCurrent_opening_angle_in_radians(
 			double current_opening_angle_in_radians) {
-		this.current_opening_angle_in_radians = current_opening_angle_in_radians;
-		if (this.current_opening_angle_in_radians > this.maximum_opening_angle_in_radians)
-			this.current_opening_angle_in_radians = this.maximum_opening_angle_in_radians;
-		if (this.current_opening_angle_in_radians < this.minimum_opening_angle_in_radians)
-			this.current_opening_angle_in_radians = this.minimum_opening_angle_in_radians;
-		this.current_opening_factor = this.current_opening_angle_in_radians * 2
+		this.currentOpeningAngleInRadians = current_opening_angle_in_radians;
+		if (this.currentOpeningAngleInRadians > this.maximumOpeningAngleInRadians)
+			this.currentOpeningAngleInRadians = this.maximumOpeningAngleInRadians;
+		if (this.currentOpeningAngleInRadians < this.minimumOpeningAngleInRadians)
+			this.currentOpeningAngleInRadians = this.minimumOpeningAngleInRadians;
+		this.currentOpeningFactor = this.currentOpeningAngleInRadians * 2
 				/ Math.PI;
-		this.current_opening_angle_in_degrees = this.current_opening_factor * 90;
-		this.current_difference_of_electrical_potential = this.current_opening_factor
-				* (maximum_difference_of_electrical_potential - minimum_difference_of_electrical_potential)
-				+ minimum_difference_of_electrical_potential;
+		this.currentOpeningAngleInDegrees = this.currentOpeningFactor * 90;
+		this.currentDifferenceOfElectricalPotential = this.currentOpeningFactor
+				* (maximumDifferenceOfElectricalPotential - minimumDifferenceOfElectricalPotential)
+				+ minimumDifferenceOfElectricalPotential;
 	}
 
 	/**
@@ -97,7 +97,7 @@ public class ElectronicThrottleModule {
 	 *         current_opening_angle_in_radians.
 	 */
 	public double getCurrent_opening_angle_in_radians() {
-		return this.current_opening_angle_in_radians;
+		return this.currentOpeningAngleInRadians;
 	}
 
 	/**
@@ -114,17 +114,17 @@ public class ElectronicThrottleModule {
 	 */
 	public void setCurrent_opening_angle_in_degrees(
 			double current_opening_angle_in_degrees) {
-		this.current_opening_angle_in_degrees = current_opening_angle_in_degrees;
-		if (this.current_opening_angle_in_degrees > this.maximum_opening_angle_in_degrees)
-			this.current_opening_angle_in_degrees = this.maximum_opening_angle_in_degrees;
-		if (this.current_opening_angle_in_degrees < this.minimum_opening_angle_in_degrees)
-			this.current_opening_angle_in_degrees = this.minimum_opening_angle_in_degrees;
-		this.current_opening_factor = this.current_opening_angle_in_radians / 90;
-		this.current_opening_angle_in_radians = this.current_opening_factor
+		this.currentOpeningAngleInDegrees = current_opening_angle_in_degrees;
+		if (this.currentOpeningAngleInDegrees > this.maximumOpeningAngleInDegrees)
+			this.currentOpeningAngleInDegrees = this.maximumOpeningAngleInDegrees;
+		if (this.currentOpeningAngleInDegrees < this.minimumOpeningAngleInDegrees)
+			this.currentOpeningAngleInDegrees = this.minimumOpeningAngleInDegrees;
+		this.currentOpeningFactor = this.currentOpeningAngleInRadians / 90;
+		this.currentOpeningAngleInRadians = this.currentOpeningFactor
 				* Math.PI / 2;
-		this.current_difference_of_electrical_potential = this.current_opening_factor
-				* (maximum_difference_of_electrical_potential - minimum_difference_of_electrical_potential)
-				+ minimum_difference_of_electrical_potential;
+		this.currentDifferenceOfElectricalPotential = this.currentOpeningFactor
+				* (maximumDifferenceOfElectricalPotential - minimumDifferenceOfElectricalPotential)
+				+ minimumDifferenceOfElectricalPotential;
 	}
 
 	/**
@@ -136,7 +136,7 @@ public class ElectronicThrottleModule {
 	 *         current_opening_angle_in_degrees.
 	 */
 	public double getCurrent_opening_angle_in_degrees() {
-		return this.current_opening_angle_in_degrees;
+		return this.currentOpeningAngleInDegrees;
 	}
 
 	/**
@@ -152,17 +152,17 @@ public class ElectronicThrottleModule {
 	 *            variável current_opening_factor.
 	 */
 	public void setCurrent_opening_factor(double current_opening_factor) {
-		this.current_opening_factor = current_opening_factor;
-		if (this.current_opening_factor > maximum_opening_factor)
-			this.current_opening_factor = maximum_opening_factor;
-		if (this.current_opening_factor < minimum_opening_factor)
-			this.current_opening_factor = minimum_opening_factor;
-		this.current_opening_angle_in_radians = this.current_opening_factor
+		this.currentOpeningFactor = current_opening_factor;
+		if (this.currentOpeningFactor > maximumOpeningFactor)
+			this.currentOpeningFactor = maximumOpeningFactor;
+		if (this.currentOpeningFactor < minimumOpeningFactor)
+			this.currentOpeningFactor = minimumOpeningFactor;
+		this.currentOpeningAngleInRadians = this.currentOpeningFactor
 				* Math.PI / 2;
-		this.current_opening_angle_in_degrees = this.current_opening_factor * 90;
-		this.current_difference_of_electrical_potential = this.current_opening_factor
-				* (maximum_difference_of_electrical_potential - minimum_difference_of_electrical_potential)
-				+ minimum_difference_of_electrical_potential;
+		this.currentOpeningAngleInDegrees = this.currentOpeningFactor * 90;
+		this.currentDifferenceOfElectricalPotential = this.currentOpeningFactor
+				* (maximumDifferenceOfElectricalPotential - minimumDifferenceOfElectricalPotential)
+				+ minimumDifferenceOfElectricalPotential;
 	}
 
 	/**
@@ -172,6 +172,6 @@ public class ElectronicThrottleModule {
 	 * @return o valor da variável (do tipo double) current_opening_factor.
 	 */
 	public double getCurrent_opening_factor() {
-		return this.current_opening_factor;
+		return this.currentOpeningFactor;
 	}
 }

@@ -11,8 +11,8 @@ package com.google.sites.danieltcc1.model;
 public class PrototypeScientificExperiment {
 
 	// declaração de objetos.
-	private Prototype my_prototype;
-	private Air ambient_air;
+	private Prototype myPrototype;
+	private Air ambientAir;
 
 	/**
 	 * Construtor desta classe.
@@ -21,8 +21,8 @@ public class PrototypeScientificExperiment {
 	 */
 	public PrototypeScientificExperiment() {
 
-		my_prototype = new Prototype();
-		ambient_air = new Air();
+		myPrototype = new Prototype();
+		ambientAir = new Air();
 
 	}
 
@@ -31,8 +31,8 @@ public class PrototypeScientificExperiment {
 	 * 
 	 * @return o objeto (do tipo Prototipo) meu_prototipo.
 	 */
-	public Prototype getMy_prototype() {
-		return this.my_prototype;
+	public Prototype getMyPrototype() {
+		return this.myPrototype;
 	}
 
 	/**
@@ -40,8 +40,8 @@ public class PrototypeScientificExperiment {
 	 * 
 	 * @return o objeto (do tipo Ar) ar_ambiente.
 	 */
-	public Air getAmbient_air() {
-		return this.ambient_air;
+	public Air getAmbientAir() {
+		return this.ambientAir;
 	}
 
 }
