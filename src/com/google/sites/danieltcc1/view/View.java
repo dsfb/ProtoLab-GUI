@@ -13,7 +13,7 @@ public class View extends JFrame {
   */
 	private static final long serialVersionUID = 1L;
 
-	// declaração de objetos e variáveis.
+	// declaraï¿½ï¿½o de objetos e variï¿½veis.
 	private JPanel windowContent;
 
 	private GridLayout gl;
@@ -130,7 +130,16 @@ public class View extends JFrame {
 		ModelsMenu = new JMenu(messages.getString("choose_a_model"));
 		Models = new JMenuItem[5];
 		for (int i = 1; i < 6; i++) {
-			Models[i - 1] = new JMenuItem(messages.getString("model") + i);
+			String label = "";
+			switch (i) {
+			case 1:
+				label = messages.getString("model") + " for " + 
+						messages.getString("ann")+ ": " + i;
+				break;
+			default:
+				label = messages.getString("model") + i;
+			}
+			Models[i - 1] = new JMenuItem(label);
 			ModelsMenu.add(Models[i - 1]);
 			Models[i - 1].setActionCommand("Models" + i);
 		}
@@ -233,7 +242,7 @@ public class View extends JFrame {
 	public void restart(String field1, String field2, String field3,
 			String field4, String responselabel5, String responselabel6, String responselabel7,
 			String responselabel8, String responselabel9, String responselabel10) {
-		// reajuste da janela na Interface Gráfica do Usuário.
+		// reajuste da janela na Interface Grï¿½fica do Usuï¿½rio.
 		if (field1 != null) {
 			this.responseLabel1.setText(field1);
 		}
@@ -337,13 +346,13 @@ public class View extends JFrame {
 	}
 
 	/**
-	 * Este método change a variável referente à frequência de rotação do motor
-	 * universal, na instância da classe Experimento_prototipo.
+	 * Este mï¿½todo change a variï¿½vel referente ï¿½ frequï¿½ncia de rotaï¿½ï¿½o do motor
+	 * universal, na instï¿½ncia da classe Experimento_prototipo.
 	 */
 	public void change_rot_freq(double rot_freq, double field_3,
 			double field_4, int execution) {
 
-		// ajuste dos objetos para changer a frequência de rotação do motor
+		// ajuste dos objetos para changer a frequï¿½ncia de rotaï¿½ï¿½o do motor
 		// universal.
 		responseLabel5.setText(rot_freq + "");
 
@@ -359,13 +368,13 @@ public class View extends JFrame {
 	}
 
 	/**
-	 * Este método change a variável referente ao fator de abertura do módulo
-	 * "válvula borboleta", na instância da classe Experimento_prototipo.
+	 * Este mï¿½todo change a variï¿½vel referente ao fator de abertura do mï¿½dulo
+	 * "vï¿½lvula borboleta", na instï¿½ncia da classe Experimento_prototipo.
 	 */
 	public void change_open_factor(double open_factor, double field3,
 			double field4, int execution) {
 
-		// ajuste dos objetos para changer o fator de abertura do módulo válvula
+		// ajuste dos objetos para changer o fator de abertura do mï¿½dulo vï¿½lvula
 		// borboleta.
 		responseLabel6.setText(open_factor + "");
 
@@ -383,13 +392,13 @@ public class View extends JFrame {
 	}
 
 	/**
-	 * Este método change a variável referente à pressão do ar admitido e do ar
-	 * ambiente, na instância da classe Experimento_prototipo.
+	 * Este mï¿½todo change a variï¿½vel referente ï¿½ pressï¿½o do ar admitido e do ar
+	 * ambiente, na instï¿½ncia da classe Experimento_prototipo.
 	 */
 	public void change_air_pressure(double air_pressure, double field3,
 			int execution) {
 
-		// ajuste dos objetos para changer a pressão do ar ambiente.
+		// ajuste dos objetos para changer a pressï¿½o do ar ambiente.
 		responseLabel1.setText(air_pressure + "");
 
 		responseLabel9.setText(this.responseLabel3.getText());
@@ -401,8 +410,8 @@ public class View extends JFrame {
 	}
 
 	/**
-	 * Este método change a variável referente ao volume do ar admitido, na
-	 * instância da classe Experimento_prototipo.
+	 * Este mï¿½todo change a variï¿½vel referente ao volume do ar admitido, na
+	 * instï¿½ncia da classe Experimento_prototipo.
 	 */
 	public void change_air_volum(double air_volum, double field3, int execution) {
 
@@ -418,8 +427,8 @@ public class View extends JFrame {
 	}
 
 	/**
-	 * Este método change a variável referente à massa molar do ar admitido e do
-	 * ar ambiente, na instância da classe Experimento_prototipo.
+	 * Este mï¿½todo change a variï¿½vel referente ï¿½ massa molar do ar admitido e do
+	 * ar ambiente, na instï¿½ncia da classe Experimento_prototipo.
 	 */
 	public void change_air_molar_mass(double air_molar_mass, double field3,
 			int execution) {
@@ -436,8 +445,8 @@ public class View extends JFrame {
 	}
 
 	/**
-	 * Este método change a variável referente à temperatura do ar ambiente e do
-	 * ar admitido, na instância da classe Experimento_prototipo.
+	 * Este mï¿½todo change a variï¿½vel referente ï¿½ temperatura do ar ambiente e do
+	 * ar admitido, na instï¿½ncia da classe Experimento_prototipo.
 	 */
 	public void change_air_temperature(double air_temperature, double field3,
 			int execution) {
@@ -456,12 +465,12 @@ public class View extends JFrame {
 	}
 
 	/**
-	 * Este método retira os componentes da Interface Gráfica do Usuário que são
-	 * desnecessários durante alguma situação de simulação.
+	 * Este mï¿½todo retira os componentes da Interface Grï¿½fica do Usuï¿½rio que sï¿½o
+	 * desnecessï¿½rios durante alguma situaï¿½ï¿½o de simulaï¿½ï¿½o.
 	 */
 	public void retiracomponentes() {
 
-		// ajuste dos objetos na janela da Interface Gráfica do Usuário.
+		// ajuste dos objetos na janela da Interface Grï¿½fica do Usuï¿½rio.
 		gl = new GridLayout(12, 1);
 
 		windowContent.setLayout(gl);
@@ -484,12 +493,12 @@ public class View extends JFrame {
 	}
 
 	/**
-	 * Este método adiciona os componentes da Interface Gráfica do Usuário que
-	 * são necessários durante alguma situação de simulação.
+	 * Este mï¿½todo adiciona os componentes da Interface Grï¿½fica do Usuï¿½rio que
+	 * sï¿½o necessï¿½rios durante alguma situaï¿½ï¿½o de simulaï¿½ï¿½o.
 	 */
 	public void adicionacomponentes() {
 
-		// ajuste dos objetos na janela da Interface Gráfica do Usuário.
+		// ajuste dos objetos na janela da Interface Grï¿½fica do Usuï¿½rio.
 		gl = new GridLayout(16, 1);
 
 		windowContent.setLayout(gl);
