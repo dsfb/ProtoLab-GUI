@@ -529,8 +529,9 @@ public class View extends JFrame {
 
 	public void eventModel0() {
 		info = messages.getString("info") + " - 1. "
-				+ messages.getString("model");
-		chosenModel.setText(messages.getString("the_model") + "1 "
+				+ messages.getString("model") + ": " + messages.getString("ann");
+		chosenModel.setText(messages.getString("the_model") + "1: " +
+				messages.getString("ann") + " "
 				+ messages.getString("was_chosen"));
 	}
 

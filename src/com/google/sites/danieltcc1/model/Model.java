@@ -10,7 +10,7 @@ package com.google.sites.danieltcc1.model;
  * @version 1.0.2
  * @since versão 1.0b1
  */
-public class Model {
+public abstract class Model {
 
 	// declaração de variáveis e constantes.
 	private double input1;
@@ -80,9 +80,7 @@ public class Model {
 	 * da saída deste modelo.
 	 * 
 	 */
-	public void setOutput() {
-
-	}
+	public abstract void setOutput();
 
 	/**
 	 * Este método fixa a variável (do tipo double) saida, isto é, o valor real
