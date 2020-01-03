@@ -130,14 +130,31 @@ public class View extends JFrame {
 		ModelsMenu = new JMenu(messages.getString("choose_a_model"));
 		Models = new JMenuItem[5];
 		for (int i = 1; i < 6; i++) {
-			String label = "";
+			String label = " " +
+					messages.getString("model") + " " + 
+					messages.getString("of_type") + " " +
+					messages.getString("phenomenological");
 			switch (i) {
 			case 1:
-				label = messages.getString("model") + " for " + 
-						messages.getString("ann")+ ": " + i;
+				label = messages.getString("first") + " " + 
+						messages.getString("model") + " with " + 
+						messages.getString("ann");
+				break;
+			case 2:
+				label = messages.getString("second") + label;
+				break;
+			case 3:
+				label = messages.getString("third") + label;
+				break;
+			case 4:
+				label = messages.getString("fourth") + label;
+				break;
+			case 5:
+				label = messages.getString("fifth") + label;
 				break;
 			default:
-				label = messages.getString("model") + i;
+				label = "Unknown option!";
+				break;
 			}
 			Models[i - 1] = new JMenuItem(label);
 			ModelsMenu.add(Models[i - 1]);
@@ -243,21 +260,11 @@ public class View extends JFrame {
 			String field4, String responselabel5, String responselabel6, String responselabel7,
 			String responselabel8, String responselabel9, String responselabel10) {
 		// reajuste da janela na Interface Gr�fica do Usu�rio.
-		if (field1 != null) {
-			this.responseLabel1.setText(field1);
-		}
-		if (field2 != null) {
-			this.responseLabel2.setText(field2);
-		}
-		if (field3 != null) {
-			this.responseLabel3.setText(field3);
-		}
-		if (field4 != null) {
-			this.responseLabel4.setText(field4);
-		}
-		if (responselabel5 != null) {
-			this.responseLabel5.setText(responselabel5);
-		}
+		this.responseLabel1.setText(field1);
+		this.responseLabel2.setText(field2);
+		this.responseLabel3.setText(field3);
+		this.responseLabel4.setText(field4);
+		this.responseLabel5.setText(responselabel5);
 		if (responselabel6 != null) {
 			this.responseLabel6.setText(responselabel6);
 		}
@@ -537,38 +544,56 @@ public class View extends JFrame {
 	}
 
 	public void eventModel0() {
-		info = messages.getString("info") + " - 1. "
-				+ messages.getString("model") + ": " + messages.getString("ann");
-		chosenModel.setText(messages.getString("the_model") + "1: " +
-				messages.getString("ann") + " "
-				+ messages.getString("was_chosen"));
+		info = messages.getString("info") + " - " + messages.getString("first") + " "
+				+ messages.getString("model") + " with " + messages.getString("ann");
+		chosenModel.setText(messages.getString("the_model") + " " + messages.getString("first")
+				+ messages.getString("model") + " with " + messages.getString("ann") 
+				+ " " + messages.getString("was_chosen"));
 	}
 
+	private void eventModelPhenomenologicalX(int x) {
+		String label = "";
+		switch(x) {
+		case 2:
+			label = messages.getString("second");
+			break;
+		case 3:
+			label = messages.getString("third");
+			break;
+		case 4:
+			label = messages.getString("fourth");
+			break;
+		case 5:
+			label = messages.getString("fifth");
+			break;
+		default:
+			label = "unknown";
+			break;
+		}
+		info = messages.getString("info") + " - " + label + " "
+				+ messages.getString("model") + " " + 
+				messages.getString("of_type") + " " + 
+				messages.getString("phenomenological");
+		chosenModel.setText(messages.getString("the") + " " + label + " " +
+				messages.getString("model") + " " + messages.getString("of_type")
+				+ " " + messages.getString("phenomenological") + " " + 
+				messages.getString("was_chosen"));
+			
+	}
+	
 	public void eventModel1() {
-		info = messages.getString("info") + " - 2. "
-				+ messages.getString("model");
-		chosenModel.setText(messages.getString("the_model") + "2 "
-				+ messages.getString("was_chosen"));
+		this.eventModelPhenomenologicalX(2);
 	}
 
 	public void eventModel2() {
-		info = messages.getString("info") + " - 3. "
-				+ messages.getString("model");
-		chosenModel.setText(messages.getString("the_model") + "3 "
-				+ messages.getString("was_chosen"));
+		this.eventModelPhenomenologicalX(3);
 	}
 
 	public void eventModel3() {
-		info = messages.getString("info") + " - 4. "
-				+ messages.getString("model");
-		chosenModel.setText(messages.getString("the_model") + "4 "
-				+ messages.getString("was_chosen"));
+		this.eventModelPhenomenologicalX(4);
 	}
 
 	public void eventModel4() {
-		info = messages.getString("info") + " - 5. "
-				+ messages.getString("model");
-		chosenModel.setText(messages.getString("the_model") + "5 "
-				+ messages.getString("was_chosen"));
+		this.eventModelPhenomenologicalX(5);
 	}
 }

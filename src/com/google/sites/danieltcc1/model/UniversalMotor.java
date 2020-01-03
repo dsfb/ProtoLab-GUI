@@ -11,24 +11,20 @@ package com.google.sites.danieltcc1.model;
 public class UniversalMotor {
 
 	// declaração e instanciação de variáveis.
-	private double rotation_frequency_Hz;
-	private final double maximum_rotation_frequency_Hz = 585.0;
-	private final double minimum_rotation_frequency_Hz = 0.0;
+	private double rotationFrequencyHz;
+	private static final double maximumRotationFrequencyHz = 585.0;
+	private static final double minimumRotationFrequencyHz = 0.0;
 
 	/**
 	 * Este método fixa a frequência de rotação deste motor, isto é, o valor da
 	 * variável (do tipo double) rotation_frequency_Hz.
 	 * 
-	 * @param rotation_frequency_Hz
+	 * @param rotationFrequency
 	 *            - uma constante (do tipo double) fornecida para fixar a
 	 *            variável rotation_frequency_Hz.
 	 */
-	public void setRotation_frequency_Hz(double rotation_frequency_Hz) {
-		this.rotation_frequency_Hz = rotation_frequency_Hz;
-		if (this.rotation_frequency_Hz > maximum_rotation_frequency_Hz)
-			this.rotation_frequency_Hz = maximum_rotation_frequency_Hz;
-		if (this.rotation_frequency_Hz < minimum_rotation_frequency_Hz)
-			this.rotation_frequency_Hz = minimum_rotation_frequency_Hz;
+	public void setRotationFrequency(double rotationFrequency) {
+		this.rotationFrequencyHz = Math.min(Math.max(rotationFrequency, minimumRotationFrequencyHz), maximumRotationFrequencyHz);
 	}
 
 	/**
@@ -37,7 +33,7 @@ public class UniversalMotor {
 	 * 
 	 * @return o valor da variável (do tipo double) rotation_frequency_Hz.
 	 */
-	public double getRotation_frequency_Hz() {
-		return this.rotation_frequency_Hz;
+	public double getRotationFrequency() {
+		return this.rotationFrequencyHz;
 	}
 }

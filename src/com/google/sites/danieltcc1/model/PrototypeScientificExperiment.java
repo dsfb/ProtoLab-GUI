@@ -43,5 +43,12 @@ public class PrototypeScientificExperiment {
 	public Air getAmbientAir() {
 		return this.ambientAir;
 	}
-
+	
+	public void setRotationFrequency(double rotationFrequency) {
+		this.myPrototype.setRotationFrequency(rotationFrequency);
+	}
+	
+	public double getRotationFrequency() {
+		return this.myPrototype.getRotationFrequency();
+	}
 }

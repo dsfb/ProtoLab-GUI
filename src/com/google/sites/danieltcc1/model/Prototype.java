@@ -12,11 +12,11 @@ package com.google.sites.danieltcc1.model;
 public class Prototype {
 
 	// declaração de objetos.
-	private Air the_air_inside_the_prototype;
-	private UniversalMotor the_universal_motor_of_the_prototype;
-	private ElectronicThrottleModule the_electronic_throttle_module_of_the_prototype;
-	private Model model_maf;
-	private Model model_map;
+	private Air internalAir;
+	private UniversalMotor universalMotor;
+	private ElectronicThrottleModule electronicThrottle;
+	private Model mafModel = new DummyModel();
+	private Model mapModel = new DummyModel();
 
 	/**
 	 * Construtor desta classe (Prototipo). Constrói uma instância da classe Ar,
@@ -27,9 +27,9 @@ public class Prototype {
 	public Prototype() {
 
 		// instanciação de objetos.
-		the_air_inside_the_prototype = new Air();
-		the_universal_motor_of_the_prototype = new UniversalMotor();
-		the_electronic_throttle_module_of_the_prototype = new ElectronicThrottleModule();
+		internalAir = new Air();
+		universalMotor = new UniversalMotor();
+		electronicThrottle = new ElectronicThrottleModule();
 
 	}
 
@@ -38,8 +38,8 @@ public class Prototype {
 	 * 
 	 * @return o objeto (do tipo Ar) the_air_inside_the_prototype.
 	 */
-	public Air getThe_air_inside_the_prototype() {
-		return this.the_air_inside_the_prototype;
+	public Air getInternalAir() {
+		return this.internalAir;
 	}
 
 	/**
@@ -50,21 +50,21 @@ public class Prototype {
 	 *            número inteiro para especificar o modelo desejado.<br>
 	 * 
 	 */
-	public void build_model_maf(int i) {
+	public void buildMafModel(int i) {
 
 		// lógica de construção dos objetos relacionados aos modelos projetados
 		// para o fluxo de massa
 		// do ar admitido.
 		if (i == 0)
-			model_maf = new AnnMafModel();
+			mafModel = new AnnMafModel();
 		else if (i == 1)
-			model_maf = new SecondMafModel();
+			mafModel = new SecondMafModel();
 		else if (i == 2)
-			model_maf = new ThirdMafModel();
+			mafModel = new ThirdMafModel();
 		else if (i == 3)
-			model_maf = new FourthMafModel();
+			mafModel = new FourthMafModel();
 		else if (i == 4)
-			model_maf = new FifthMafModel();
+			mafModel = new FifthMafModel();
 	}
 
 	/**
@@ -81,15 +81,15 @@ public class Prototype {
 		// para a pressão do ar
 		// admitido.
 		if (i == 0)
-			model_map = new AnnMapModel();
+			mapModel = new AnnMapModel();
 		else if (i == 1)
-			model_map = new SecondMapModel();
+			mapModel = new SecondMapModel();
 		else if (i == 2)
-			model_map = new ThirdMapModel();
+			mapModel = new ThirdMapModel();
 		else if (i == 3)
-			model_map = new FourthMapModel();
+			mapModel = new FourthMapModel();
 		else if (i == 4)
-			model_map = new FifthMapModel();
+			mapModel = new FifthMapModel();
 	}
 
 	/**
@@ -100,7 +100,7 @@ public class Prototype {
 	 *         fluxo de massa do ar admitido.
 	 */
 	public Model getModel_maf() {
-		return model_maf;
+		return mafModel;
 	}
 
 	/**
@@ -111,7 +111,7 @@ public class Prototype {
 	 *         pressão do ar admitido.
 	 */
 	public Model getModel_map() {
-		return model_map;
+		return mapModel;
 	}
 
 	/**
@@ -122,7 +122,7 @@ public class Prototype {
 	 *         the_universal_motor_of_the_prototype.
 	 */
 	public UniversalMotor getThe_universal_motor_of_the_prototype() {
-		return this.the_universal_motor_of_the_prototype;
+		return this.universalMotor;
 	}
 
 	/**
@@ -133,7 +133,14 @@ public class Prototype {
 	 *         the_electronic_throttle_module_of_the_prototype.
 	 */
 	public ElectronicThrottleModule getThe_electronic_throttle_module_of_the_prototype() {
-		return this.the_electronic_throttle_module_of_the_prototype;
+		return this.electronicThrottle;
 	}
-
+	
+	public void setRotationFrequency(double rotationFrequency) {
+		this.universalMotor.setRotationFrequency(rotationFrequency);
+	}
+	
+	public double getRotationFrequency() {
+		return this.universalMotor.getRotationFrequency();
+	}
 }
