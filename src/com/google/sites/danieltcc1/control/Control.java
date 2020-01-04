@@ -7,25 +7,26 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class Control implements ActionListener {
 	private View view;
-
-	private PrototypeScientificExperiment prototypeScientificExperiment;
+    private ModelManager modelManager;
+	private ScientificExperiment prototype;
 
 	private int modelChoice;
 
 	private int execution;
 
-	public Control(View vision) {
-		this.view = vision;
-		vision.configureListener(this);
-		prototypeScientificExperiment = new PrototypeScientificExperiment();
+	public Control(View view) {
+		this.view = view;
+		view.configureListener(this);
+		prototype = new ScientificExperiment();
 
-		// fixação de valor.
+		// fixacao de valor.
 		modelChoice = -1;
 
-		// chamada do método reinicia().
+		// chamada do metodo reinicia().
 		restart();
 	}
 
@@ -39,9 +40,8 @@ public class Control implements ActionListener {
 		BigDecimal bd = new BigDecimal(r);
 
 		// setScale is immutable
-		bd = bd.setScale(decimalPlaces, BigDecimal.ROUND_HALF_UP);
-		r = bd.doubleValue();
-		return r;
+		bd = bd.setScale(decimalPlaces, RoundingMode.HALF_UP);
+		return bd.doubleValue();
 	}
 
 	public void start() {
@@ -51,74 +51,74 @@ public class Control implements ActionListener {
 	public void restart() {
 		String field1 = null, field2 = null, field3 = null, field4 = null, field5 = null, field6 = null, field7 = null,
 				field8 = null, field9 = null, field10 = null;
-		// lógica de inicialização
+		// logica de inicializacao
 
-		// ajuste dos objetos durante a reinicialização.
-		prototypeScientificExperiment.getMyPrototype().getThe_universal_motor_of_the_prototype()
+		// ajuste dos objetos durante a reinicializacao.
+		prototype.getMyPrototype().getThe_universal_motor_of_the_prototype()
 				.setRotationFrequency(0);
-		prototypeScientificExperiment.getMyPrototype().getThe_electronic_throttle_module_of_the_prototype()
+		prototype.getMyPrototype().getThe_electronic_throttle_module_of_the_prototype()
 				.setCurrent_opening_factor(0);
 
-		prototypeScientificExperiment.getMyPrototype().getModel_map().setInput1(0);
-		prototypeScientificExperiment.getMyPrototype().getModel_map().setInput2(0);
-		prototypeScientificExperiment.getMyPrototype().getModel_map().setPressure_kPa(94.99);
-		prototypeScientificExperiment.getMyPrototype().getModel_map().setVolum_L(0.53751);
-		prototypeScientificExperiment.getMyPrototype().getModel_map().setMolar_mass_g_mol(28.96);
-		prototypeScientificExperiment.getMyPrototype().getModel_map().setTemperature_k(300);
-		prototypeScientificExperiment.getMyPrototype().getModel_map().setOutput();
+		prototype.getMyPrototype().getModel_map().setInput1(0);
+		prototype.getMyPrototype().getModel_map().setInput2(0);
+		prototype.getMyPrototype().getModel_map().setPressure_kPa(94.99);
+		prototype.getMyPrototype().getModel_map().setVolum_L(0.53751);
+		prototype.getMyPrototype().getModel_map().setMolar_mass_g_mol(28.96);
+		prototype.getMyPrototype().getModel_map().setTemperature_k(300);
+		prototype.getMyPrototype().getModel_map().setOutput();
 
-		prototypeScientificExperiment.getAmbientAir()
-				.setPressure_kPa(prototypeScientificExperiment.getMyPrototype().getModel_map().getPressure_kPa());
-		prototypeScientificExperiment.getAmbientAir().setTemperature_kelvin(300);
-		prototypeScientificExperiment.getAmbientAir()
-				.setVolum_liters(prototypeScientificExperiment.getMyPrototype().getModel_map().getVolum_L());
-		prototypeScientificExperiment.getAmbientAir().setAir_molar_mass_g_mol(
-				prototypeScientificExperiment.getMyPrototype().getModel_map().getMolar_mass_g_mol());
+		prototype.getAmbientAir()
+				.setPressure_kPa(prototype.getMyPrototype().getModel_map().getPressure_kPa());
+		prototype.getAmbientAir().setTemperature_kelvin(300);
+		prototype.getAmbientAir()
+				.setVolum_liters(prototype.getMyPrototype().getModel_map().getVolum_L());
+		prototype.getAmbientAir().setAir_molar_mass_g_mol(
+				prototype.getMyPrototype().getModel_map().getMolar_mass_g_mol());
 
-		prototypeScientificExperiment.getMyPrototype().getInternalAir()
-				.setTemperature_kelvin(prototypeScientificExperiment.getAmbientAir().getTemperature_kelvin());
-		prototypeScientificExperiment.getMyPrototype().getInternalAir()
-				.setPressure_kPa(prototypeScientificExperiment.getAmbientAir().getPressure_kPa());
-		prototypeScientificExperiment.getMyPrototype().getInternalAir()
-				.setVolum_liters(prototypeScientificExperiment.getMyPrototype().getModel_map().getVolum_L());
-		prototypeScientificExperiment.getMyPrototype().getInternalAir().setAir_molar_mass_g_mol(
-				prototypeScientificExperiment.getMyPrototype().getModel_map().getMolar_mass_g_mol());
+		prototype.getMyPrototype().getInternalAir()
+				.setTemperature_kelvin(prototype.getAmbientAir().getTemperature_kelvin());
+		prototype.getMyPrototype().getInternalAir()
+				.setPressure_kPa(prototype.getAmbientAir().getPressure_kPa());
+		prototype.getMyPrototype().getInternalAir()
+				.setVolum_liters(prototype.getMyPrototype().getModel_map().getVolum_L());
+		prototype.getMyPrototype().getInternalAir().setAir_molar_mass_g_mol(
+				prototype.getMyPrototype().getModel_map().getMolar_mass_g_mol());
 
-		prototypeScientificExperiment.getMyPrototype().getModel_maf().setInput1(0);
-		prototypeScientificExperiment.getMyPrototype().getModel_maf().setInput2(0);
-		prototypeScientificExperiment.getMyPrototype().getModel_maf().setOutput();
-		prototypeScientificExperiment.getAmbientAir()
-				.setMass_flow_kg_h(prototypeScientificExperiment.getMyPrototype().getModel_maf().getOutput());
-		prototypeScientificExperiment.getMyPrototype().getInternalAir()
-				.setMass_flow_kg_h(prototypeScientificExperiment.getAmbientAir().getMass_flow_kg_h());
+		prototype.getMyPrototype().getModel_maf().setInput1(0);
+		prototype.getMyPrototype().getModel_maf().setInput2(0);
+		prototype.getMyPrototype().getModel_maf().setOutput();
+		prototype.getAmbientAir()
+				.setMass_flow_kg_h(prototype.getMyPrototype().getModel_maf().getOutput());
+		prototype.getMyPrototype().getInternalAir()
+				.setMass_flow_kg_h(prototype.getAmbientAir().getMass_flow_kg_h());
 
-		field1 = formatAsStr(prototypeScientificExperiment.getAmbientAir().getPressure_kPa());
-		field2 = formatAsStr(prototypeScientificExperiment.getAmbientAir().getTemperature_kelvin());
+		field1 = formatAsStr(prototype.getAmbientAir().getPressure_kPa());
+		field2 = formatAsStr(prototype.getAmbientAir().getTemperature_kelvin());
 		field3 = formatAsStr(
-				prototypeScientificExperiment.getMyPrototype().getInternalAir().getPressure_kPa());
+				prototype.getMyPrototype().getInternalAir().getPressure_kPa());
 		field4 = formatAsStr(
-				prototypeScientificExperiment.getMyPrototype().getInternalAir().getMass_flow_kg_h());
-		field5 = formatAsStr(prototypeScientificExperiment.getMyPrototype().getThe_universal_motor_of_the_prototype()
+				prototype.getMyPrototype().getInternalAir().getMass_flow_kg_h());
+		field5 = formatAsStr(prototype.getMyPrototype().getThe_universal_motor_of_the_prototype()
 				.getRotationFrequency());
-		field6 = formatAsStr(prototypeScientificExperiment.getMyPrototype()
+		field6 = formatAsStr(prototype.getMyPrototype()
 				.getThe_electronic_throttle_module_of_the_prototype().getCurrent_opening_factor());
 		field7 = formatAsStr(
-				prototypeScientificExperiment.getMyPrototype().getInternalAir().getVolum_liters());
-		field8 = formatAsStr(prototypeScientificExperiment.getMyPrototype().getInternalAir()
+				prototype.getMyPrototype().getInternalAir().getVolum_liters());
+		field8 = formatAsStr(prototype.getMyPrototype().getInternalAir()
 				.getAir_molar_mass_g_mol());
 
 		field9 = field3;
 		field10 = field4;
 		
-		// fixação de valores;
+		// fixaï¿½ï¿½o de valores;
 		execution = 0;
 
 		view.restart(field1, field2, field3, field4, field5, field6, field7, field8, field9, field10);
 	}
 
 	/**
-	 * Este método change a variável referente à frequência de rotação do motor
-	 * universal, na instância da classe Experimento_prototipo.
+	 * Este mï¿½todo change a variï¿½vel referente ï¿½ frequï¿½ncia de rotaï¿½ï¿½o do motor
+	 * universal, na instï¿½ncia da classe Experimento_prototipo.
 	 */
 	public void change_rot_freq(double rot_freq) {
 
@@ -127,35 +127,35 @@ public class Control implements ActionListener {
 		if (modelChoice == -1)
 			this.view.showMessage(this.view.getMessage("please_choose_a_model_before_changing_any_parameters"));
 
-		// ajuste dos objetos para changer a frequência de rotação do motor
+		// ajuste dos objetos para changer a frequï¿½ncia de rotaï¿½ï¿½o do motor
 		// universal.
-		prototypeScientificExperiment.getMyPrototype().getThe_universal_motor_of_the_prototype()
+		prototype.getMyPrototype().getThe_universal_motor_of_the_prototype()
 				.setRotationFrequency(rot_freq);
 
-		prototypeScientificExperiment.getMyPrototype().getModel_map().setInput1(rot_freq);
+		prototype.getMyPrototype().getModel_map().setInput1(rot_freq);
 
-		prototypeScientificExperiment.getMyPrototype().getModel_map().setOutput();
+		prototype.getMyPrototype().getModel_map().setOutput();
 
-		prototypeScientificExperiment.getMyPrototype().getInternalAir()
-				.setPressure_kPa(prototypeScientificExperiment.getMyPrototype().getModel_map().getOutput());
+		prototype.getMyPrototype().getInternalAir()
+				.setPressure_kPa(prototype.getMyPrototype().getModel_map().getOutput());
 
-		prototypeScientificExperiment.getMyPrototype().getModel_maf().setInput1(rot_freq);
-		prototypeScientificExperiment.getMyPrototype().getModel_maf().setOutput();
-		prototypeScientificExperiment.getMyPrototype().getInternalAir()
-				.setMass_flow_kg_h(prototypeScientificExperiment.getMyPrototype().getModel_maf().getOutput());
+		prototype.getMyPrototype().getModel_maf().setInput1(rot_freq);
+		prototype.getMyPrototype().getModel_maf().setOutput();
+		prototype.getMyPrototype().getInternalAir()
+				.setMass_flow_kg_h(prototype.getMyPrototype().getModel_maf().getOutput());
 
 		execution = execution + 1;
 
 		field3 = format(
-				prototypeScientificExperiment.getMyPrototype().getInternalAir().getPressure_kPa());
+				prototype.getMyPrototype().getInternalAir().getPressure_kPa());
 		field4 = format(
-				prototypeScientificExperiment.getMyPrototype().getInternalAir().getMass_flow_kg_h());
+				prototype.getMyPrototype().getInternalAir().getMass_flow_kg_h());
 		this.view.change_rot_freq(format(rot_freq), field3, field4, execution);
 	}
 
 	/**
-	 * Este método change a variável referente ao fator de abertura do módulo
-	 * "válvula borboleta", na instância da classe Experimento_prototipo.
+	 * Este mï¿½todo change a variï¿½vel referente ao fator de abertura do mï¿½dulo
+	 * "vï¿½lvula borboleta", na instï¿½ncia da classe Experimento_prototipo.
 	 */
 	public void change_open_factor(double open_factor) {
 
@@ -164,76 +164,76 @@ public class Control implements ActionListener {
 		if (modelChoice == -1)
 			this.view.showMessage(this.view.getMessage("please_choose_a_model_before_changing_any_parameters"));
 
-		// ajuste dos objetos para changer o fator de abertura do módulo válvula
+		// ajuste dos objetos para changer o fator de abertura do mï¿½dulo vï¿½lvula
 		// borboleta.
-		prototypeScientificExperiment.getMyPrototype().getThe_electronic_throttle_module_of_the_prototype()
+		prototype.getMyPrototype().getThe_electronic_throttle_module_of_the_prototype()
 				.setCurrent_opening_factor(open_factor);
 
-		prototypeScientificExperiment.getMyPrototype().getModel_map().setInput2(open_factor);
-		prototypeScientificExperiment.getMyPrototype().getModel_map().setOutput();
-		prototypeScientificExperiment.getMyPrototype().getInternalAir()
-				.setPressure_kPa(prototypeScientificExperiment.getMyPrototype().getModel_map().getOutput());
+		prototype.getMyPrototype().getModel_map().setInput2(open_factor);
+		prototype.getMyPrototype().getModel_map().setOutput();
+		prototype.getMyPrototype().getInternalAir()
+				.setPressure_kPa(prototype.getMyPrototype().getModel_map().getOutput());
 
-		prototypeScientificExperiment.getMyPrototype().getModel_maf().setInput2(open_factor);
-		prototypeScientificExperiment.getMyPrototype().getModel_maf().setOutput();
-		prototypeScientificExperiment.getMyPrototype().getInternalAir()
-				.setMass_flow_kg_h(prototypeScientificExperiment.getMyPrototype().getModel_maf().getOutput());
+		prototype.getMyPrototype().getModel_maf().setInput2(open_factor);
+		prototype.getMyPrototype().getModel_maf().setOutput();
+		prototype.getMyPrototype().getInternalAir()
+				.setMass_flow_kg_h(prototype.getMyPrototype().getModel_maf().getOutput());
 
 		execution = execution + 1;
 
 		field3 = format(
-				prototypeScientificExperiment.getMyPrototype().getInternalAir().getPressure_kPa());
+				prototype.getMyPrototype().getInternalAir().getPressure_kPa());
 
 		field4 = format(
-				prototypeScientificExperiment.getMyPrototype().getInternalAir().getMass_flow_kg_h());
+				prototype.getMyPrototype().getInternalAir().getMass_flow_kg_h());
 
 		this.view.change_open_factor(format(open_factor), field3, field4, execution);
 
 	}
 
 	/**
-	 * Este método change a variável referente à pressão do ar admitido e do ar
-	 * ambiente, na instância da classe Experimento_prototipo.
+	 * Este mï¿½todo change a variï¿½vel referente ï¿½ pressï¿½o do ar admitido e do ar
+	 * ambiente, na instï¿½ncia da classe Experimento_prototipo.
 	 */
 	public void change_air_pressure(double air_pressure) {
 
 		double field3;
 
-		// ajuste dos objetos para changer a pressão do ar ambiente.
-		prototypeScientificExperiment.getMyPrototype().getModel_map().setPressure_kPa(air_pressure);
-		prototypeScientificExperiment.getMyPrototype().getModel_map().setOutput();
-		prototypeScientificExperiment.getAmbientAir().setPressure_kPa(air_pressure);
+		// ajuste dos objetos para changer a pressï¿½o do ar ambiente.
+		prototype.getMyPrototype().getModel_map().setPressure_kPa(air_pressure);
+		prototype.getMyPrototype().getModel_map().setOutput();
+		prototype.getAmbientAir().setPressure_kPa(air_pressure);
 
-		prototypeScientificExperiment.getMyPrototype().getInternalAir()
-				.setPressure_kPa(prototypeScientificExperiment.getMyPrototype().getModel_map().getOutput());
+		prototype.getMyPrototype().getInternalAir()
+				.setPressure_kPa(prototype.getMyPrototype().getModel_map().getOutput());
 
 		execution = execution + 1;
 
 		field3 = format(
-				prototypeScientificExperiment.getMyPrototype().getInternalAir().getPressure_kPa());
+				prototype.getMyPrototype().getInternalAir().getPressure_kPa());
 
 		this.view.change_air_pressure(format(air_pressure), field3, execution);
 	}
 
 	/**
-	 * Este método change a variável referente ao volume do ar admitido, na
-	 * instância da classe Experimento_prototipo.
+	 * Este mï¿½todo change a variï¿½vel referente ao volume do ar admitido, na
+	 * instï¿½ncia da classe Experimento_prototipo.
 	 */
 	public void change_air_volum(double air_volum) {
 
 		double field3;
 
 		// ajuste dos objetos para changer o volume do ar admitido.
-		prototypeScientificExperiment.getMyPrototype().getModel_map().setVolum_L(air_volum);
-		prototypeScientificExperiment.getMyPrototype().getModel_map().setOutput();
+		prototype.getMyPrototype().getModel_map().setVolum_L(air_volum);
+		prototype.getMyPrototype().getModel_map().setOutput();
 
-		prototypeScientificExperiment.getMyPrototype().getInternalAir()
-				.setPressure_kPa(prototypeScientificExperiment.getMyPrototype().getModel_map().getOutput());
+		prototype.getMyPrototype().getInternalAir()
+				.setPressure_kPa(prototype.getMyPrototype().getModel_map().getOutput());
 
 		field3 = format(
-				prototypeScientificExperiment.getMyPrototype().getInternalAir().getPressure_kPa());
+				prototype.getMyPrototype().getInternalAir().getPressure_kPa());
 
-		prototypeScientificExperiment.getMyPrototype().getInternalAir().setVolum_liters(air_volum);
+		prototype.getMyPrototype().getInternalAir().setVolum_liters(air_volum);
 
 		execution = execution + 1;
 
@@ -241,26 +241,26 @@ public class Control implements ActionListener {
 	}
 
 	/**
-	 * Este método change a variável referente à massa molar do ar admitido e do ar
-	 * ambiente, na instância da classe Experimento_prototipo.
+	 * Este mï¿½todo change a variï¿½vel referente ï¿½ massa molar do ar admitido e do ar
+	 * ambiente, na instï¿½ncia da classe Experimento_prototipo.
 	 */
 	public void change_air_molar_mass(double air_molar_mass) {
 
 		double field3;
 
 		// ajuste dos objetos para changer a massa molar do ar ambiente.
-		prototypeScientificExperiment.getMyPrototype().getModel_map().setMolar_mass_g_mol(air_molar_mass);
-		prototypeScientificExperiment.getMyPrototype().getModel_map().setOutput();
-		prototypeScientificExperiment.getAmbientAir().setAir_molar_mass_g_mol(air_molar_mass);
+		prototype.getMyPrototype().getModel_map().setMolar_mass_g_mol(air_molar_mass);
+		prototype.getMyPrototype().getModel_map().setOutput();
+		prototype.getAmbientAir().setAir_molar_mass_g_mol(air_molar_mass);
 
-		prototypeScientificExperiment.getMyPrototype().getInternalAir()
-				.setPressure_kPa(prototypeScientificExperiment.getMyPrototype().getModel_map().getOutput());
+		prototype.getMyPrototype().getInternalAir()
+				.setPressure_kPa(prototype.getMyPrototype().getModel_map().getOutput());
 
-		prototypeScientificExperiment.getMyPrototype().getInternalAir()
+		prototype.getMyPrototype().getInternalAir()
 				.setAir_molar_mass_g_mol(air_molar_mass);
 
 		field3 = format(
-				prototypeScientificExperiment.getMyPrototype().getInternalAir().getPressure_kPa());
+				prototype.getMyPrototype().getInternalAir().getPressure_kPa());
 
 		execution = execution + 1;
 
@@ -268,25 +268,25 @@ public class Control implements ActionListener {
 	}
 
 	/**
-	 * Este método change a variável referente à temperatura do ar ambiente e do ar
-	 * admitido, na instância da classe Experimento_prototipo.
+	 * Este mï¿½todo change a variï¿½vel referente ï¿½ temperatura do ar ambiente e do ar
+	 * admitido, na instï¿½ncia da classe Experimento_prototipo.
 	 */
 	public void change_air_temperature(double air_temperature) {
 
 		double field3;
 
 		// ajuste dos objetos para changer a temperatura do ar ambiente.
-		prototypeScientificExperiment.getMyPrototype().getModel_map().setTemperature_k(air_temperature);
-		prototypeScientificExperiment.getMyPrototype().getModel_map().setOutput();
-		prototypeScientificExperiment.getAmbientAir().setTemperature_kelvin(air_temperature);
+		prototype.getMyPrototype().getModel_map().setTemperature_k(air_temperature);
+		prototype.getMyPrototype().getModel_map().setOutput();
+		prototype.getAmbientAir().setTemperature_kelvin(air_temperature);
 
-		prototypeScientificExperiment.getMyPrototype().getInternalAir()
-				.setPressure_kPa(prototypeScientificExperiment.getMyPrototype().getModel_map().getOutput());
+		prototype.getMyPrototype().getInternalAir()
+				.setPressure_kPa(prototype.getMyPrototype().getModel_map().getOutput());
 
 		field3 = format(
-				prototypeScientificExperiment.getMyPrototype().getInternalAir().getPressure_kPa());
+				prototype.getMyPrototype().getInternalAir().getPressure_kPa());
 
-		prototypeScientificExperiment.getMyPrototype().getInternalAir()
+		prototype.getMyPrototype().getInternalAir()
 				.setTemperature_kelvin(air_temperature);
 
 		execution = execution + 1;
@@ -318,7 +318,7 @@ public class Control implements ActionListener {
 				}
 			}
 		}
-		// evento de changença do fator de abertura do módulo válvula borboleta.
+		// evento de changenï¿½a do fator de abertura do mï¿½dulo vï¿½lvula borboleta.
 		else if (e.getActionCommand().equals("etm_factor")) {
 			for (boolean continuefor = true; continuefor;) {
 				try {
@@ -364,7 +364,7 @@ public class Control implements ActionListener {
 				}
 			}
 		}
-		// evento de changença do volume total do ar admitido.
+		// evento de changenï¿½a do volume total do ar admitido.
 		else if (e.getActionCommand().equals("air_volum")) {
 			for (boolean continuefor = true; continuefor;) {
 				try {
@@ -388,7 +388,7 @@ public class Control implements ActionListener {
 				}
 			}
 		}
-		// evento de changença da massa molar do ar ambiente.
+		// evento de changenï¿½a da massa molar do ar ambiente.
 		else if (e.getActionCommand().equals("air_molar_mass")) {
 			for (boolean continuefor = true; continuefor;) {
 				try {
@@ -412,7 +412,7 @@ public class Control implements ActionListener {
 				}
 			}
 		}
-		// evento de changença da temperatura do ar ambiente.
+		// evento de changenï¿½a da temperatura do ar ambiente.
 		else if (e.getActionCommand().equals("air_temperature")) {
 			for (boolean continuefor = true; continuefor;) {
 				try {
@@ -436,15 +436,15 @@ public class Control implements ActionListener {
 				}
 			}
 		}
-		// evento de interrupção e término da simulação atual.
+		// evento de interrupï¿½ï¿½o e tï¿½rmino da simulaï¿½ï¿½o atual.
 		else if (e.getActionCommand().equals("stop_sim")) {
 			System.exit(0);
 		}
-		// evento de reinício da simulação atual.
+		// evento de reinï¿½cio da simulaï¿½ï¿½o atual.
 		else if (e.getActionCommand().equals("restart_sim")) {
 			restart();
 		}
-		// evento de término da execução atual deste software.
+		// evento de tï¿½rmino da execuï¿½ï¿½o atual deste software.
 		else if (e.getActionCommand().equals("ExitCommand")) {
 			System.exit(0);
 		}
@@ -457,8 +457,8 @@ public class Control implements ActionListener {
 
 			this.view.eventModel0();
 
-			prototypeScientificExperiment.getMyPrototype().build_model_map(modelChoice);
-			prototypeScientificExperiment.getMyPrototype().buildMafModel(modelChoice);
+			prototype.getMyPrototype().build_model_map(modelChoice);
+			prototype.getMyPrototype().buildMafModel(modelChoice);
 			restart();
 		} else if (e.getActionCommand().equals("Models2")) {
 
@@ -468,8 +468,8 @@ public class Control implements ActionListener {
 
 			this.view.eventModel1();
 
-			prototypeScientificExperiment.getMyPrototype().build_model_map(modelChoice);
-			prototypeScientificExperiment.getMyPrototype().buildMafModel(modelChoice);
+			prototype.getMyPrototype().build_model_map(modelChoice);
+			prototype.getMyPrototype().buildMafModel(modelChoice);
 			restart();
 		} else if (e.getActionCommand().equals("Models3")) {
 
@@ -479,8 +479,8 @@ public class Control implements ActionListener {
 
 			this.view.eventModel2();
 
-			prototypeScientificExperiment.getMyPrototype().build_model_map(modelChoice);
-			prototypeScientificExperiment.getMyPrototype().buildMafModel(modelChoice);
+			prototype.getMyPrototype().build_model_map(modelChoice);
+			prototype.getMyPrototype().buildMafModel(modelChoice);
 			restart();
 		} else if (e.getActionCommand().equals("Models4")) {
 
@@ -490,8 +490,8 @@ public class Control implements ActionListener {
 
 			this.view.eventModel3();
 
-			prototypeScientificExperiment.getMyPrototype().build_model_map(modelChoice);
-			prototypeScientificExperiment.getMyPrototype().buildMafModel(modelChoice);
+			prototype.getMyPrototype().build_model_map(modelChoice);
+			prototype.getMyPrototype().buildMafModel(modelChoice);
 			restart();
 		} else if (e.getActionCommand().equals("Models5")) {
 
@@ -501,8 +501,8 @@ public class Control implements ActionListener {
 
 			this.view.eventModel4();
 
-			prototypeScientificExperiment.getMyPrototype().build_model_map(modelChoice);
-			prototypeScientificExperiment.getMyPrototype().buildMafModel(modelChoice);
+			prototype.getMyPrototype().build_model_map(modelChoice);
+			prototype.getMyPrototype().buildMafModel(modelChoice);
 			restart();
 		}
 		// evento sobre o comando de ajuda.
@@ -521,11 +521,11 @@ public class Control implements ActionListener {
 					+ " " + this.view.getMessage("for_this_library") + /*
 																		*/"\n http://www.jfree.org/jfreechart/");
 		}
-		// evento de plotagem da resposta transitória da pressão do ar admitido.
+		// evento de plotagem da resposta transitï¿½ria da pressï¿½o do ar admitido.
 		else if (e.getActionCommand().equals("dyn_press")) {
 			this.view.plotGraphIAP(execution);
 		}
-		// evento de plotagem da resposta transitória do fluxo de massa do ar
+		// evento de plotagem da resposta transitï¿½ria do fluxo de massa do ar
 		// admitido.
 		else if (e.getActionCommand().equals("dyn_amf")) {
 			this.view.plotGraphIAMF(execution);
