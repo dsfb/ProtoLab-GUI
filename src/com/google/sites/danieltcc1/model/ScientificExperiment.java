@@ -40,7 +40,7 @@ public class ScientificExperiment {
 	 * 
 	 * @return o objeto do tipo Ar.
 	 */
-	public Air getAmbientAir() {
+	public Air getAir() {
 		return this.air;
 	}
 	

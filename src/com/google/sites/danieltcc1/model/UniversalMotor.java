@@ -12,8 +12,8 @@ public class UniversalMotor {
 
 	// declaração e instanciação de variáveis.
 	private double rotationFrequencyHz;
-	private static final double maximumRotationFrequencyHz = 585.0;
-	private static final double minimumRotationFrequencyHz = 0.0;
+	private static final double MAXIMUM_ROTATION_FREQUENCY_HZ = 585.0;
+	private static final double MINIMUM_ROTATION_FREQUENCY_HZ = 0.0;
 
 	/**
 	 * Este método fixa a frequência de rotação deste motor, isto é, o valor da
@@ -24,7 +24,7 @@ public class UniversalMotor {
 	 *            variável rotation_frequency_Hz.
 	 */
 	public void setRotationFrequency(double rotationFrequency) {
-		this.rotationFrequencyHz = Math.min(Math.max(rotationFrequency, minimumRotationFrequencyHz), maximumRotationFrequencyHz);
+		this.rotationFrequencyHz = Math.min(Math.max(rotationFrequency, MINIMUM_ROTATION_FREQUENCY_HZ), MAXIMUM_ROTATION_FREQUENCY_HZ);
 	}
 
 	/**

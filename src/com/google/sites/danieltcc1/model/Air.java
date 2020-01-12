@@ -12,22 +12,26 @@ package com.google.sites.danieltcc1.model;
 public class Air {
 
 	// declaração de variáveis e constantes.
-	private double temperature_kelvin;
-	private double temperature_celsius;
+	private double temperatureKelvin;
+	private double temperatureCelsius;
 
-	private double pressure_atm;
-	private double pressure_bar;
-	private double pressure_kPa;
+	private double pressureAtm;
+	private double pressureBar;
+	private double pressureInkPa;
 
-	private double volum_liters;
-	private double volum_m3;
+	private double volumLiters;
+	private double volumInm3;
 
-	private double mass_flow_kg_h;
-
-	private final double r_L_atm_mol_K = 0.08205746;
-	private final double r_kPa_L_mol_K = 8.314472;
-	private final double r_mbar_L_mol_K = 83.14472; // A ser usada numa versão
-	// futura do software.
+	private double massFlowInkgPerh;
+	
+	// They are the definition of "Gas constant", as defined on:
+	// https://en.wikipedia.org/wiki/Gas_constant, and defined
+	// in Brazilian Language as: "Constante universal dos gases perfeitos".
+	// Available on: https://pt.wikipedia.org/wiki/Constante_universal_dos_gases_perfeitos
+	// Observation: In May 2019, these constant values are redefined for being more precise...!
+	private final double r_L_atm_mol_K = 0.082057366080960;
+	private final double r_kPa_L_mol_K = 8.31446261815324;
+	private final double r_mbar_L_mol_K = 8.31446261815324; // Not used now...!
 
 	private double air_molar_mass_g_mol = 28.96;
 
@@ -74,9 +78,9 @@ public class Air {
 	 *            uma constante (do tipo double) fornecida para fixar a variável
 	 *            temperatura_kelvin.
 	 */
-	public void setTemperature_kelvin(double temperature_kelvin) {
-		this.temperature_kelvin = temperature_kelvin;
-		this.temperature_celsius = temperature_kelvin - 273.0;
+	public void setTemperatureKelvin(double temperatureKelvin) {
+		this.temperatureKelvin = temperatureKelvin;
+		this.temperatureCelsius = temperatureKelvin - 273.0;
 	}
 
 	/**
@@ -85,8 +89,8 @@ public class Air {
 	 * 
 	 * @return o valor da temperatura do ar em K.
 	 */
-	public double getTemperature_kelvin() {
-		return this.temperature_kelvin;
+	public double getTemperatureKelvin() {
+		return this.temperatureKelvin;
 	}
 
 	/**
@@ -99,9 +103,9 @@ public class Air {
 	 *            uma constante (do tipo double) fornecida para fixar a variável
 	 *            temperatura_celsius.
 	 */
-	public void setTemperature_celsius(double temperature_celsius) {
-		this.temperature_celsius = temperature_celsius;
-		this.temperature_kelvin = temperature_celsius + 273.0;
+	public void setTemperatureCelsius(double temperatureCelsius) {
+		this.temperatureCelsius = temperatureCelsius;
+		this.temperatureKelvin = temperatureCelsius + 273.0;
 	}
 
 	/**
@@ -110,8 +114,8 @@ public class Air {
 	 * 
 	 * @return o valor da temperatura do ar em °C.
 	 */
-	public double getTemperature_celsius() {
-		return this.temperature_celsius;
+	public double getTemperatureCelsius() {
+		return this.temperatureCelsius;
 	}
 
 	/**
@@ -125,10 +129,10 @@ public class Air {
 	 *            uma constante (do tipo double) fornecida para fixar a variável
 	 *            pressao_atm.
 	 */
-	public void setPressure_atm(double pressure_atm) {
-		this.pressure_atm = pressure_atm;
-		this.pressure_bar = pressure_atm / 1.01325;
-		this.pressure_kPa = 1.01325 * pressure_atm * 100.0;
+	public void setPressureAtm(double pressureAtm) {
+		this.pressureAtm = pressureAtm;
+		this.pressureBar = pressureAtm / 1.01325;
+		this.pressureInkPa = 1.01325 * pressureAtm * 100.0;
 	}
 
 	/**
@@ -137,8 +141,8 @@ public class Air {
 	 * 
 	 * @return o valor da pressão do ar em atm.
 	 */
-	public double getPressure_atm() {
-		return this.pressure_atm;
+	public double getPressureAtm() {
+		return this.pressureAtm;
 	}
 
 	/**
@@ -152,10 +156,10 @@ public class Air {
 	 *            uma constante (do tipo double) fornecida para fixar a variável
 	 *            pressao_bar.
 	 */
-	public void setPressure_bar(double pressure_bar) {
-		this.pressure_bar = pressure_bar;
-		this.pressure_atm = pressure_bar * 1.01325;
-		this.pressure_kPa = pressure_bar * 100.0;
+	public void setPressureBar(double pressureBar) {
+		this.pressureBar = pressureBar;
+		this.pressureAtm = pressureBar * 1.01325;
+		this.pressureInkPa = pressureBar * 100.0;
 	}
 
 	/**
@@ -165,7 +169,7 @@ public class Air {
 	 * @return o valor da pressão do ar em bar.
 	 */
 	public double getPressure_bar() {
-		return this.pressure_bar;
+		return this.pressureBar;
 	}
 
 	/**
@@ -180,9 +184,9 @@ public class Air {
 	 *            pressao_kPa.
 	 */
 	public void setPressure_kPa(double pressure_kPa) {
-		this.pressure_kPa = pressure_kPa;
-		this.pressure_atm = pressure_kPa / (1.01325 * 100);
-		this.pressure_bar = pressure_kPa / 100.0;
+		this.pressureInkPa = pressure_kPa;
+		this.pressureAtm = pressure_kPa / (1.01325 * 100);
+		this.pressureBar = pressure_kPa / 100.0;
 	}
 
 	/**
@@ -192,7 +196,7 @@ public class Air {
 	 * @return o valor da pressão do ar em kPa.
 	 */
 	public double getPressure_kPa() {
-		return this.pressure_kPa;
+		return this.pressureInkPa;
 	}
 
 	/**
@@ -206,8 +210,8 @@ public class Air {
 	 *            volume_litros.
 	 */
 	public void setVolum_liters(double volum_liters) {
-		this.volum_liters = volum_liters;
-		this.volum_m3 = volum_liters / 1000.0;
+		this.volumLiters = volum_liters;
+		this.volumInm3 = volum_liters / 1000.0;
 	}
 
 	/**
@@ -217,7 +221,7 @@ public class Air {
 	 * @return o valor do volume do ar em litros.
 	 */
 	public double getVolum_liters() {
-		return volum_liters;
+		return volumLiters;
 	}
 
 	/**
@@ -231,8 +235,8 @@ public class Air {
 	 *            volume_m3.
 	 */
 	public void setVolum_m3(double volum_m3) {
-		this.volum_m3 = volum_m3;
-		this.volum_liters = volum_m3 * 1000.0;
+		this.volumInm3 = volum_m3;
+		this.volumLiters = volum_m3 * 1000.0;
 	}
 
 	/**
@@ -242,7 +246,7 @@ public class Air {
 	 * @return o valor do volume do ar em metros cúbicos.
 	 */
 	public double getVolum_m3() {
-		return volum_m3;
+		return volumInm3;
 	}
 
 	/**
@@ -251,18 +255,18 @@ public class Air {
 	 * estado dos gases ideais.
 	 */
 	public void setNumber_of_mole_r_L_atm_mol_K() {
-		this.number_of_mole = this.pressure_atm * this.volum_liters
-				/ (this.r_L_atm_mol_K * this.temperature_kelvin);
+		this.number_of_mole = this.pressureAtm * this.volumLiters
+				/ (this.r_L_atm_mol_K * this.temperatureKelvin);
 	}
 
 	public void setNumber_of_mole_r_kPa_L_mol_K() {
-		this.number_of_mole = this.pressure_kPa * this.volum_liters
-				/ (this.r_kPa_L_mol_K * this.temperature_kelvin);
+		this.number_of_mole = this.pressureInkPa * this.volumLiters
+				/ (this.r_kPa_L_mol_K * this.temperatureKelvin);
 	}
 
 	public void setNumber_of_mole_r_mbar_L_mol_K() {
-		this.number_of_mole = this.pressure_bar * 1000 * this.volum_liters
-				/ (this.r_mbar_L_mol_K * this.temperature_kelvin);
+		this.number_of_mole = this.pressureBar * 1000 * this.volumLiters
+				/ (this.r_mbar_L_mol_K * this.temperatureKelvin);
 	}
 
 	/**
@@ -303,7 +307,7 @@ public class Air {
 	 *            fluxo_massa_kg_h.
 	 */
 	public void setMass_flow_kg_h(double mass_flow_kg_h) {
-		this.mass_flow_kg_h = mass_flow_kg_h;
+		this.massFlowInkgPerh = mass_flow_kg_h;
 	}
 
 	/**
@@ -313,6 +317,6 @@ public class Air {
 	 * @return o valor do fluxo da massa do ar em kg/h.
 	 */
 	public double getMass_flow_kg_h() {
-		return this.mass_flow_kg_h;
+		return this.massFlowInkgPerh;
 	}
 }

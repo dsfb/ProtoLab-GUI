@@ -14,15 +14,15 @@ package com.google.sites.danieltcc1.model;
 public class ThirdMapModel extends Model {
 
 	// declaração e instanciação de variáveis.
-	private double[] polinomio;
+	private double[] polynomial;
 
-	private double[][] polinomios;
+	private double[][] polynomials;
 
-	private double coef;
+	private double coefficient;
 
-	private final int coeficientes_modelo = 3;
+	private final int model_coefficients = 3;
 
-	private final int numero_termos_polinomio = 7;
+	private final int numberOfPolynomialTerms = 7;
 
 	/**
 	 * Construtor de uma instância da classe. Aloca memória para as variáveis
@@ -31,32 +31,32 @@ public class ThirdMapModel extends Model {
 	ThirdMapModel() {
 
 		// declaração e instanciação de variáveis.
-		polinomio = new double[coeficientes_modelo];
-		polinomios = new double[coeficientes_modelo][numero_termos_polinomio];
+		polynomial = new double[model_coefficients];
+		polynomials = new double[model_coefficients][numberOfPolynomialTerms];
 
-		polinomios[2][0] = 0.0022995;
-		polinomios[2][1] = -0.22368;
-		polinomios[2][2] = 3.0077;
-		polinomios[2][3] = -15.727;
-		polinomios[2][4] = 38.959;
-		polinomios[2][5] = -45.826;
-		polinomios[2][6] = 20.606;
+		polynomials[2][0] = 0.0022995;
+		polynomials[2][1] = -0.22368;
+		polynomials[2][2] = 3.0077;
+		polynomials[2][3] = -15.727;
+		polynomials[2][4] = 38.959;
+		polynomials[2][5] = -45.826;
+		polynomials[2][6] = 20.606;
 
-		polinomios[1][0] = 0.082976;
-		polinomios[1][1] = 4.0984;
-		polinomios[1][2] = -57.474;
-		polinomios[1][3] = 291.9;
-		polinomios[1][4] = -702.65;
-		polinomios[1][5] = 806.14;
-		polinomios[1][6] = -354.51;
+		polynomials[1][0] = 0.082976;
+		polynomials[1][1] = 4.0984;
+		polynomials[1][2] = -57.474;
+		polynomials[1][3] = 291.9;
+		polynomials[1][4] = -702.65;
+		polynomials[1][5] = 806.14;
+		polynomials[1][6] = -354.51;
 
-		polinomios[0][0] = 4.6781;
-		polinomios[0][1] = 48.648;
-		polinomios[0][2] = -1407.5;
-		polinomios[0][3] = 8673.4;
-		polinomios[0][4] = -22654;
-		polinomios[0][5] = 27074;
-		polinomios[0][6] = -12207;
+		polynomials[0][0] = 4.6781;
+		polynomials[0][1] = 48.648;
+		polynomials[0][2] = -1407.5;
+		polynomials[0][3] = 8673.4;
+		polynomials[0][4] = -22654;
+		polynomials[0][5] = 27074;
+		polynomials[0][6] = -12207;
 
 	}
 
@@ -68,26 +68,26 @@ public class ThirdMapModel extends Model {
 	public void setOutput() {
 
 		// declaração e instanciação de variável.
-		coef = 0;
+		coefficient = 0;
 
 		// cálculo matemático do valor definitivo de variáveis.
-		for (int i = 0; i < coeficientes_modelo; i++)
-			polinomio[i] = 0;
+		for (int i = 0; i < model_coefficients; i++)
+			polynomial[i] = 0;
 
-		for (int i = 0; i < coeficientes_modelo; i++)
-			for (int c = 0; c < numero_termos_polinomio; c++)
-				polinomio[i] = polinomio[i] + polinomios[i][c]
+		for (int i = 0; i < model_coefficients; i++)
+			for (int c = 0; c < numberOfPolynomialTerms; c++)
+				polynomial[i] = polynomial[i] + polynomials[i][c]
 						* Math.pow(getInput2(), c);
 
-		polinomio[2] = polinomio[2] / 10;
+		polynomial[2] = polynomial[2] / 10;
 
-		for (int c = 0; c < coeficientes_modelo; c++) {
-			coef = coef + polinomio[c] * Math.pow(getInput1(), c);
+		for (int c = 0; c < model_coefficients; c++) {
+			coefficient = coefficient + polynomial[c] * Math.pow(getInput1(), c);
 		}
 
 		// fixação de valor.
 		setOutput(getPressure_kPa()
-				- (coef * getR_kPa_L_mol_K() * getTemperature_k() / (1000 * getVolum_L() * getMolar_mass_g_mol())));
+				- (coefficient * getR_kPa_L_mol_K() * getTemperature_k() / (1000 * getVolum_L() * getMolar_mass_g_mol())));
 
 		if (getInput2() >= 0.67 || getInput1() == 0) {
 			setOutput(getPressure_kPa());

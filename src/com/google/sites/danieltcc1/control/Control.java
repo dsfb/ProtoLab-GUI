@@ -67,18 +67,18 @@ public class Control implements ActionListener {
 		prototype.getMyPrototype().getModel_map().setTemperature_k(300);
 		prototype.getMyPrototype().getModel_map().setOutput();
 
-		prototype.getAmbientAir()
+		prototype.getAir()
 				.setPressure_kPa(prototype.getMyPrototype().getModel_map().getPressure_kPa());
-		prototype.getAmbientAir().setTemperature_kelvin(300);
-		prototype.getAmbientAir()
+		prototype.getAir().setTemperatureKelvin(300);
+		prototype.getAir()
 				.setVolum_liters(prototype.getMyPrototype().getModel_map().getVolum_L());
-		prototype.getAmbientAir().setAir_molar_mass_g_mol(
+		prototype.getAir().setAir_molar_mass_g_mol(
 				prototype.getMyPrototype().getModel_map().getMolar_mass_g_mol());
 
 		prototype.getMyPrototype().getInternalAir()
-				.setTemperature_kelvin(prototype.getAmbientAir().getTemperature_kelvin());
+				.setTemperatureKelvin(prototype.getAir().getTemperatureKelvin());
 		prototype.getMyPrototype().getInternalAir()
-				.setPressure_kPa(prototype.getAmbientAir().getPressure_kPa());
+				.setPressure_kPa(prototype.getAir().getPressure_kPa());
 		prototype.getMyPrototype().getInternalAir()
 				.setVolum_liters(prototype.getMyPrototype().getModel_map().getVolum_L());
 		prototype.getMyPrototype().getInternalAir().setAir_molar_mass_g_mol(
@@ -87,13 +87,13 @@ public class Control implements ActionListener {
 		prototype.getMyPrototype().getModel_maf().setInput1(0);
 		prototype.getMyPrototype().getModel_maf().setInput2(0);
 		prototype.getMyPrototype().getModel_maf().setOutput();
-		prototype.getAmbientAir()
+		prototype.getAir()
 				.setMass_flow_kg_h(prototype.getMyPrototype().getModel_maf().getOutput());
 		prototype.getMyPrototype().getInternalAir()
-				.setMass_flow_kg_h(prototype.getAmbientAir().getMass_flow_kg_h());
+				.setMass_flow_kg_h(prototype.getAir().getMass_flow_kg_h());
 
-		field1 = formatAsStr(prototype.getAmbientAir().getPressure_kPa());
-		field2 = formatAsStr(prototype.getAmbientAir().getTemperature_kelvin());
+		field1 = formatAsStr(prototype.getAir().getPressure_kPa());
+		field2 = formatAsStr(prototype.getAir().getTemperatureKelvin());
 		field3 = formatAsStr(
 				prototype.getMyPrototype().getInternalAir().getPressure_kPa());
 		field4 = formatAsStr(
@@ -202,7 +202,7 @@ public class Control implements ActionListener {
 		// ajuste dos objetos para changer a press�o do ar ambiente.
 		prototype.getMyPrototype().getModel_map().setPressure_kPa(air_pressure);
 		prototype.getMyPrototype().getModel_map().setOutput();
-		prototype.getAmbientAir().setPressure_kPa(air_pressure);
+		prototype.getAir().setPressure_kPa(air_pressure);
 
 		prototype.getMyPrototype().getInternalAir()
 				.setPressure_kPa(prototype.getMyPrototype().getModel_map().getOutput());
@@ -251,7 +251,7 @@ public class Control implements ActionListener {
 		// ajuste dos objetos para changer a massa molar do ar ambiente.
 		prototype.getMyPrototype().getModel_map().setMolar_mass_g_mol(air_molar_mass);
 		prototype.getMyPrototype().getModel_map().setOutput();
-		prototype.getAmbientAir().setAir_molar_mass_g_mol(air_molar_mass);
+		prototype.getAir().setAir_molar_mass_g_mol(air_molar_mass);
 
 		prototype.getMyPrototype().getInternalAir()
 				.setPressure_kPa(prototype.getMyPrototype().getModel_map().getOutput());
@@ -278,7 +278,7 @@ public class Control implements ActionListener {
 		// ajuste dos objetos para changer a temperatura do ar ambiente.
 		prototype.getMyPrototype().getModel_map().setTemperature_k(air_temperature);
 		prototype.getMyPrototype().getModel_map().setOutput();
-		prototype.getAmbientAir().setTemperature_kelvin(air_temperature);
+		prototype.getAir().setTemperatureKelvin(air_temperature);
 
 		prototype.getMyPrototype().getInternalAir()
 				.setPressure_kPa(prototype.getMyPrototype().getModel_map().getOutput());
@@ -287,7 +287,7 @@ public class Control implements ActionListener {
 				prototype.getMyPrototype().getInternalAir().getPressure_kPa());
 
 		prototype.getMyPrototype().getInternalAir()
-				.setTemperature_kelvin(air_temperature);
+				.setTemperatureKelvin(air_temperature);
 
 		execution = execution + 1;
 
