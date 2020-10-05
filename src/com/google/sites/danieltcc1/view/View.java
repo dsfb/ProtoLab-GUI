@@ -2,7 +2,9 @@ package com.google.sites.danieltcc1.view;
 
 import javax.swing.*;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 import org.jfree.ui.RefineryUtilities;
 
@@ -60,6 +62,11 @@ public class View extends JFrame {
 	private JMenu ModelsMenu;
 	private JMenuItem Models[];
 
+	private JMenu optionMenu;
+    private JMenu languageSetting;
+    private JMenuItem enUsLang;
+    private JMenuItem ptBrLang;
+	
 	private JMenu HelpMenu;
 	private JMenuItem AboutCommand;
 
@@ -92,7 +99,7 @@ public class View extends JFrame {
 		messages = ResourceBundle.getBundle("MessagesBundle", currentLocale);
 		info = messages.getString("info");
 
-		label1 = new JLabel(messages.getString("ambient_air_pressure_kpa_gui"));
+		label1 = new JLabel();
 		responseLabel1 = new JLabel();
 		label2 = new JLabel(messages.getString("air_temperature_k_gui"));
 		responseLabel2 = new JLabel();
@@ -127,44 +134,60 @@ public class View extends JFrame {
 		ExitCommand.setActionCommand("ExitCommand");
 		FileMenu.add(ExitCommand);
 
-		ModelsMenu = new JMenu(messages.getString("choose_a_model"));
+		ModelsMenu = new JMenu();
 		Models = new JMenuItem[5];
 		for (int i = 1; i < 6; i++) {
-			String label = " " +
-					messages.getString("model") + " " + 
-					messages.getString("of_type") + " " +
-					messages.getString("phenomenological");
-			switch (i) {
-			case 1:
-				label = messages.getString("first") + " " + 
-						messages.getString("model") + " with " + 
-						messages.getString("ann");
-				break;
-			case 2:
-				label = messages.getString("second") + label;
-				break;
-			case 3:
-				label = messages.getString("third") + label;
-				break;
-			case 4:
-				label = messages.getString("fourth") + label;
-				break;
-			case 5:
-				label = messages.getString("fifth") + label;
-				break;
-			default:
-				label = "Unknown option!";
-				break;
-			}
-			Models[i - 1] = new JMenuItem(label);
+			Models[i - 1] = new JMenuItem();
 			ModelsMenu.add(Models[i - 1]);
 			Models[i - 1].setActionCommand("Models" + i);
 		}
-		HelpMenu = new JMenu(messages.getString("help"));
+
+		HelpMenu = new JMenu();
 		AboutCommand = new JMenuItem(messages.getString("about"));
 		AboutCommand.setActionCommand("AboutCommand");
 		HelpMenu.add(AboutCommand);
 
+		optionMenu = new JMenu("Options");
+        languageSetting = new JMenu("Language");
+        optionMenu.add(languageSetting);
+        enUsLang = new JMenuItem("English");
+        ptBrLang = new JMenuItem("Português do Brasil");
+        languageSetting.add(enUsLang);
+        languageSetting.add(ptBrLang);
+        enUsLang.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// https://stackoverflow.com/questions/615973/changing-locale-at-runtime-in-swing
+				ResourceBundle.clearCache();
+				View.this.currentLocale = new Locale("en", "US");
+				View.this.messages = ResourceBundle.getBundle("MessagesBundle", View.this.currentLocale);
+				View.this.internationalize();
+			}
+        	
+        });
+
+        ptBrLang.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				SwingUtilities.invokeLater(new Runnable() {
+
+					@Override
+					public void run() {
+						// https://stackoverflow.com/questions/615973/changing-locale-at-runtime-in-swing
+						ResourceBundle.clearCache();
+						View.this.currentLocale = new Locale("pt", "BR");
+						View.this.messages = ResourceBundle.getBundle("MessagesBundle", View.this.currentLocale);
+						View.this.internationalize();
+					}
+					
+				});
+				
+			}
+        	
+        });
+		
 		responseLabel1.setHorizontalAlignment(JTextField.RIGHT);
 		responseLabel2.setHorizontalAlignment(JTextField.RIGHT);
 		responseLabel3.setHorizontalAlignment(JTextField.RIGHT);
@@ -227,6 +250,7 @@ public class View extends JFrame {
 
 		menuBar.add(FileMenu);
 		menuBar.add(ModelsMenu);
+		menuBar.add(optionMenu);
 		menuBar.add(HelpMenu);
 
 		mu_freq.setActionCommand("mu_freq");
@@ -243,6 +267,46 @@ public class View extends JFrame {
 		initialize();
 	}
 
+	private void internationalize() {
+		this.setTitle(info + " "
+				+ messages.getString("the_simulation_was_started"));
+		info = messages.getString("info");
+		label1.setText(messages.getString("ambient_air_pressure_kpa_gui"));
+		ModelsMenu.setText(messages.getString("choose_a_model"));
+		
+		for (int i = 1; i < 6; i++) {
+			String label = " " +
+					messages.getString("model") + " " + 
+					messages.getString("of_type") + " " +
+					messages.getString("phenomenological");
+			switch (i) {
+			case 1:
+				label = messages.getString("first") + " " +
+						messages.getString("model") + " " +
+						messages.getString("with") + " " +
+						messages.getString("ann");
+				break;
+			case 2:
+				label = messages.getString("second") + label;
+				break;
+			case 3:
+				label = messages.getString("third") + label;
+				break;
+			case 4:
+				label = messages.getString("fourth") + label;
+				break;
+			case 5:
+				label = messages.getString("fifth") + label;
+				break;
+			default:
+				label = "Unknown option!";
+				break;
+			}
+			Models[i - 1].setText(label);
+		}
+		HelpMenu.setText(messages.getString("help"));
+	}
+	
 	/**
 	 * This method initializes this
 	 * 
@@ -251,8 +315,7 @@ public class View extends JFrame {
 	private void initialize() {
 		this.setContentPane(windowContent);
 		this.setJMenuBar(menuBar);
-		this.setTitle(info + " "
-				+ messages.getString("the_simulation_was_started"));
+		this.internationalize();
 		this.pack();
 	}
 
