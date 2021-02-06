@@ -1,17 +1,17 @@
 package com.google.sites.danieltcc1.model;
 
 /**
- * Classe que define o ar como uma grandeza física, do ponto de vista da teoria
- * química. Assim, o ar é definido pela temperatura, pela pressão, pelo volume,
- * pelo número de mols, pela massa molar, pela massa e pelo fluxo de massa dele.
+ * Classe que define o ar como uma grandeza fï¿½sica, do ponto de vista da teoria
+ * quï¿½mica. Assim, o ar ï¿½ definido pela temperatura, pela pressï¿½o, pelo volume,
+ * pelo nï¿½mero de mols, pela massa molar, pela massa e pelo fluxo de massa dele.
  * 
  * @author Daniel S. F. Bruno
  * @version 1.0.2
- * @since versão 1.0b1
+ * @since versï¿½o 1.0b1
  */
 public class Air {
 
-	// declaração de variáveis e constantes.
+	// declaraï¿½ï¿½o de variï¿½veis e constantes.
 	private double temperatureKelvin;
 	private double temperatureCelsius;
 
@@ -40,18 +40,18 @@ public class Air {
 	private double number_of_mole;
 
 	/**
-	 * Construtor de uma instância da classe. Aloca memória para as variáveis.
+	 * Construtor de uma instï¿½ncia da classe. Aloca memï¿½ria para as variï¿½veis.
 	 */
-	Air() {
+	public Air() {
 
 	}
 
 	/**
-	 * Este método fixa a variável (do tipo double) massa_molar_ar_g_mol, com
-	 * uma constante dada, isto é, o valor da massa molar do ar em g/mol.
+	 * Este mï¿½todo fixa a variï¿½vel (do tipo double) massa_molar_ar_g_mol, com
+	 * uma constante dada, isto ï¿½, o valor da massa molar do ar em g/mol.
 	 * 
 	 * @param massa_molar_ar_g_mol
-	 *            uma constante (do tipo double) fornecida para fixar a variável
+	 *            uma constante (do tipo double) fornecida para fixar a variï¿½vel
 	 *            massa_molar_ar_g_mol.
 	 */
 	public void setAir_molar_mass_g_mol(double air_molar_mass_g_mol) {
@@ -59,8 +59,8 @@ public class Air {
 	}
 
 	/**
-	 * Este método retorna a variável (do tipo double) massa_molar_ar_g_mol,
-	 * isto é, o valor da massa molar do ar em g/mol.
+	 * Este mï¿½todo retorna a variï¿½vel (do tipo double) massa_molar_ar_g_mol,
+	 * isto ï¿½, o valor da massa molar do ar em g/mol.
 	 * 
 	 * @return o valor da massa molar do ar em g/mol.
 	 */
@@ -69,13 +69,13 @@ public class Air {
 	}
 
 	/**
-	 * Este método fixa a variável (do tipo double) temperatura_kelvin, com uma
-	 * constante dada, isto é, o valor da temperatura do ar em K. Assim, ele
-	 * também fixa a variável temperatura_celsius com o auxílio da relação
-	 * matemática entre as temperaturas dadas em K e °C para uma mesma medida.
+	 * Este mï¿½todo fixa a variï¿½vel (do tipo double) temperatura_kelvin, com uma
+	 * constante dada, isto ï¿½, o valor da temperatura do ar em K. Assim, ele
+	 * tambï¿½m fixa a variï¿½vel temperatura_celsius com o auxï¿½lio da relaï¿½ï¿½o
+	 * matemï¿½tica entre as temperaturas dadas em K e ï¿½C para uma mesma medida.
 	 * 
 	 * @param temperatura_kelvin
-	 *            uma constante (do tipo double) fornecida para fixar a variável
+	 *            uma constante (do tipo double) fornecida para fixar a variï¿½vel
 	 *            temperatura_kelvin.
 	 */
 	public void setTemperatureKelvin(double temperatureKelvin) {
@@ -84,8 +84,8 @@ public class Air {
 	}
 
 	/**
-	 * Este método retorna a variável (do tipo double) temperatura_kelvin, isto
-	 * é, o valor da temperatura do ar em K.
+	 * Este mï¿½todo retorna a variï¿½vel (do tipo double) temperatura_kelvin, isto
+	 * ï¿½, o valor da temperatura do ar em K.
 	 * 
 	 * @return o valor da temperatura do ar em K.
 	 */
@@ -94,13 +94,13 @@ public class Air {
 	}
 
 	/**
-	 * Este método fixa a variável (do tipo double) temperatura_celsius, com uma
-	 * constante dada, isto é, o valor da temperatura do ar em °C. Assim, ele
-	 * também fixa a variável temperatura_kelvin com o auxílio da relação
-	 * matemática entre as temperaturas dadas em K e °C para uma mesma medida.
+	 * Este mï¿½todo fixa a variï¿½vel (do tipo double) temperatura_celsius, com uma
+	 * constante dada, isto ï¿½, o valor da temperatura do ar em ï¿½C. Assim, ele
+	 * tambï¿½m fixa a variï¿½vel temperatura_kelvin com o auxï¿½lio da relaï¿½ï¿½o
+	 * matemï¿½tica entre as temperaturas dadas em K e ï¿½C para uma mesma medida.
 	 * 
 	 * @param temperatura_celsius
-	 *            uma constante (do tipo double) fornecida para fixar a variável
+	 *            uma constante (do tipo double) fornecida para fixar a variï¿½vel
 	 *            temperatura_celsius.
 	 */
 	public void setTemperatureCelsius(double temperatureCelsius) {
@@ -109,24 +109,24 @@ public class Air {
 	}
 
 	/**
-	 * Este método retorna a variável (do tipo double) temperatura_celsius, isto
-	 * é, o valor da temperatura do ar em °C.
+	 * Este mï¿½todo retorna a variï¿½vel (do tipo double) temperatura_celsius, isto
+	 * ï¿½, o valor da temperatura do ar em ï¿½C.
 	 * 
-	 * @return o valor da temperatura do ar em °C.
+	 * @return o valor da temperatura do ar em ï¿½C.
 	 */
 	public double getTemperatureCelsius() {
 		return this.temperatureCelsius;
 	}
 
 	/**
-	 * Este método fixa a variável (do tipo double) pressao_atm, com uma
-	 * constante dada, isto é, o valor da pressão do ar em atm. Assim, ele
-	 * também fixa as variáveis pressao_bar e pressao_kPa com o auxílio da
-	 * relação matemática entre as pressões dadas em kPa, bar e atm para uma
+	 * Este mï¿½todo fixa a variï¿½vel (do tipo double) pressao_atm, com uma
+	 * constante dada, isto ï¿½, o valor da pressï¿½o do ar em atm. Assim, ele
+	 * tambï¿½m fixa as variï¿½veis pressao_bar e pressao_kPa com o auxï¿½lio da
+	 * relaï¿½ï¿½o matemï¿½tica entre as pressï¿½es dadas em kPa, bar e atm para uma
 	 * mesma medida.
 	 * 
 	 * @param pressao_atm
-	 *            uma constante (do tipo double) fornecida para fixar a variável
+	 *            uma constante (do tipo double) fornecida para fixar a variï¿½vel
 	 *            pressao_atm.
 	 */
 	public void setPressureAtm(double pressureAtm) {
@@ -136,24 +136,24 @@ public class Air {
 	}
 
 	/**
-	 * Este método retorna a variável (do tipo double) pressao_atm, isto é, o
-	 * valor da pressão do ar em atm.
+	 * Este mï¿½todo retorna a variï¿½vel (do tipo double) pressao_atm, isto ï¿½, o
+	 * valor da pressï¿½o do ar em atm.
 	 * 
-	 * @return o valor da pressão do ar em atm.
+	 * @return o valor da pressï¿½o do ar em atm.
 	 */
 	public double getPressureAtm() {
 		return this.pressureAtm;
 	}
 
 	/**
-	 * Este método fixa a variável (do tipo double) pressao_bar, com uma
-	 * constante dada, isto é, o valor da pressão do ar em bar. Assim, ele
-	 * também fixa as variáveis pressao_atm e pressao_kPa com o auxílio da
-	 * relação matemática entre as pressões dadas em kPa, bar e atm para uma
+	 * Este mï¿½todo fixa a variï¿½vel (do tipo double) pressao_bar, com uma
+	 * constante dada, isto ï¿½, o valor da pressï¿½o do ar em bar. Assim, ele
+	 * tambï¿½m fixa as variï¿½veis pressao_atm e pressao_kPa com o auxï¿½lio da
+	 * relaï¿½ï¿½o matemï¿½tica entre as pressï¿½es dadas em kPa, bar e atm para uma
 	 * mesma medida.
 	 * 
 	 * @param pressao_bar
-	 *            uma constante (do tipo double) fornecida para fixar a variável
+	 *            uma constante (do tipo double) fornecida para fixar a variï¿½vel
 	 *            pressao_bar.
 	 */
 	public void setPressureBar(double pressureBar) {
@@ -163,24 +163,24 @@ public class Air {
 	}
 
 	/**
-	 * Este método retorna a variável (do tipo double) pressao_bar, isto é, o
-	 * valor da pressão do ar em bar.
+	 * Este mï¿½todo retorna a variï¿½vel (do tipo double) pressao_bar, isto ï¿½, o
+	 * valor da pressï¿½o do ar em bar.
 	 * 
-	 * @return o valor da pressão do ar em bar.
+	 * @return o valor da pressï¿½o do ar em bar.
 	 */
 	public double getPressure_bar() {
 		return this.pressureBar;
 	}
 
 	/**
-	 * Este método fixa a variável (do tipo double) pressao_kPa, com uma
-	 * constante dada, isto é, o valor da pressão do ar em kPa. Assim, ele
-	 * também fixa as variáveis pressao_atm e pressao_bar com o auxílio da
-	 * relação matemática entre as pressões dadas em kPa, bar e atm para uma
+	 * Este mï¿½todo fixa a variï¿½vel (do tipo double) pressao_kPa, com uma
+	 * constante dada, isto ï¿½, o valor da pressï¿½o do ar em kPa. Assim, ele
+	 * tambï¿½m fixa as variï¿½veis pressao_atm e pressao_bar com o auxï¿½lio da
+	 * relaï¿½ï¿½o matemï¿½tica entre as pressï¿½es dadas em kPa, bar e atm para uma
 	 * mesma medida.
 	 * 
 	 * @param pressao_kPa
-	 *            uma constante (do tipo double) fornecida para fixar a variável
+	 *            uma constante (do tipo double) fornecida para fixar a variï¿½vel
 	 *            pressao_kPa.
 	 */
 	public void setPressure_kPa(double pressure_kPa) {
@@ -190,23 +190,23 @@ public class Air {
 	}
 
 	/**
-	 * Este método retorna a variável (do tipo double) pressao_kPa, isto é, o
-	 * valor da pressão do ar em kPa.
+	 * Este mï¿½todo retorna a variï¿½vel (do tipo double) pressao_kPa, isto ï¿½, o
+	 * valor da pressï¿½o do ar em kPa.
 	 * 
-	 * @return o valor da pressão do ar em kPa.
+	 * @return o valor da pressï¿½o do ar em kPa.
 	 */
 	public double getPressure_kPa() {
 		return this.pressureInkPa;
 	}
 
 	/**
-	 * Este método fixa a variável (do tipo double) volume_litros, com uma
-	 * constante dada, isto é, o valor do volume do ar em litros. Assim, ele
-	 * também fixa a variável volume_m3 com o auxílio da relação matemática
-	 * entre os volumes dados em litros e metros cúbicos para uma mesma medida.
+	 * Este mï¿½todo fixa a variï¿½vel (do tipo double) volume_litros, com uma
+	 * constante dada, isto ï¿½, o valor do volume do ar em litros. Assim, ele
+	 * tambï¿½m fixa a variï¿½vel volume_m3 com o auxï¿½lio da relaï¿½ï¿½o matemï¿½tica
+	 * entre os volumes dados em litros e metros cï¿½bicos para uma mesma medida.
 	 * 
 	 * @param volume_litros
-	 *            uma constante (do tipo double) fornecida para fixar a variável
+	 *            uma constante (do tipo double) fornecida para fixar a variï¿½vel
 	 *            volume_litros.
 	 */
 	public void setVolum_liters(double volum_liters) {
@@ -215,7 +215,7 @@ public class Air {
 	}
 
 	/**
-	 * Este método retorna a variável (do tipo double) volume_litros, isto é, o
+	 * Este mï¿½todo retorna a variï¿½vel (do tipo double) volume_litros, isto ï¿½, o
 	 * valor do volume do ar em litros.
 	 * 
 	 * @return o valor do volume do ar em litros.
@@ -225,13 +225,13 @@ public class Air {
 	}
 
 	/**
-	 * Este método fixa a variável (do tipo double) volume_m3, com uma constante
-	 * dada, isto é, o valor do volume do ar em metros cúbicos. Assim, ele
-	 * também fixa a variável volume_litros com o auxílio da relação matemática
-	 * entre os volumes dados em litros e metros cúbicos para uma mesma medida.
+	 * Este mï¿½todo fixa a variï¿½vel (do tipo double) volume_m3, com uma constante
+	 * dada, isto ï¿½, o valor do volume do ar em metros cï¿½bicos. Assim, ele
+	 * tambï¿½m fixa a variï¿½vel volume_litros com o auxï¿½lio da relaï¿½ï¿½o matemï¿½tica
+	 * entre os volumes dados em litros e metros cï¿½bicos para uma mesma medida.
 	 * 
 	 * @param volume_m3
-	 *            uma constante (do tipo double) fornecida para fixar a variável
+	 *            uma constante (do tipo double) fornecida para fixar a variï¿½vel
 	 *            volume_m3.
 	 */
 	public void setVolum_m3(double volum_m3) {
@@ -240,18 +240,18 @@ public class Air {
 	}
 
 	/**
-	 * Este método retorna a variável (do tipo double) volume_m3, isto é, o
-	 * valor do volume do ar em metros cúbicos.
+	 * Este mï¿½todo retorna a variï¿½vel (do tipo double) volume_m3, isto ï¿½, o
+	 * valor do volume do ar em metros cï¿½bicos.
 	 * 
-	 * @return o valor do volume do ar em metros cúbicos.
+	 * @return o valor do volume do ar em metros cï¿½bicos.
 	 */
 	public double getVolum_m3() {
 		return volumInm3;
 	}
 
 	/**
-	 * Este método fixa a variável (do tipo double) numero_mols, isto é, o valor
-	 * do número de mols do ar. Esta fixação ocorre com o auxílio da equação de
+	 * Este mï¿½todo fixa a variï¿½vel (do tipo double) numero_mols, isto ï¿½, o valor
+	 * do nï¿½mero de mols do ar. Esta fixaï¿½ï¿½o ocorre com o auxï¿½lio da equaï¿½ï¿½o de
 	 * estado dos gases ideais.
 	 */
 	public void setNumber_of_mole_r_L_atm_mol_K() {
@@ -270,26 +270,26 @@ public class Air {
 	}
 
 	/**
-	 * Este método retorna a variável (do tipo double) numero_mols, isto é, o
-	 * valor do número de mols do ar.
+	 * Este mï¿½todo retorna a variï¿½vel (do tipo double) numero_mols, isto ï¿½, o
+	 * valor do nï¿½mero de mols do ar.
 	 * 
-	 * @return o valor do número de mols do ar.
+	 * @return o valor do nï¿½mero de mols do ar.
 	 */
 	public double getNumber_of_mole() {
 		return this.number_of_mole;
 	}
 
 	/**
-	 * Este método fixa a variável (do tipo double) massa_g, isto é, o valor da
-	 * massa do ar em gramas. Esta fixação ocorre com o auxílio da relação entre
-	 * o número de mols, a massa e a massa molar.
+	 * Este mï¿½todo fixa a variï¿½vel (do tipo double) massa_g, isto ï¿½, o valor da
+	 * massa do ar em gramas. Esta fixaï¿½ï¿½o ocorre com o auxï¿½lio da relaï¿½ï¿½o entre
+	 * o nï¿½mero de mols, a massa e a massa molar.
 	 */
 	public void setMass_g() {
 		this.mass_g = this.number_of_mole * this.air_molar_mass_g_mol;
 	}
 
 	/**
-	 * Este método retorna a variável (do tipo double) massa_g, isto é, o valor
+	 * Este mï¿½todo retorna a variï¿½vel (do tipo double) massa_g, isto ï¿½, o valor
 	 * da massa do ar em gramas.
 	 * 
 	 * @return o valor da massa do ar em gramas.
@@ -299,11 +299,11 @@ public class Air {
 	}
 
 	/**
-	 * Este método fixa a variável (do tipo double) fluxo_massa_kg_h, com uma
-	 * constante dada, isto é, o valor do fluxo da massa do ar em kg/h.
+	 * Este mï¿½todo fixa a variï¿½vel (do tipo double) fluxo_massa_kg_h, com uma
+	 * constante dada, isto ï¿½, o valor do fluxo da massa do ar em kg/h.
 	 * 
 	 * @param fluxo_massa_kg_h
-	 *            uma constante (do tipo double) fornecida para fixar a variável
+	 *            uma constante (do tipo double) fornecida para fixar a variï¿½vel
 	 *            fluxo_massa_kg_h.
 	 */
 	public void setMass_flow_kg_h(double mass_flow_kg_h) {
@@ -311,7 +311,7 @@ public class Air {
 	}
 
 	/**
-	 * Este método retorna a variável (do tipo double) fluxo_massa_kg_h, isto é,
+	 * Este mï¿½todo retorna a variï¿½vel (do tipo double) fluxo_massa_kg_h, isto ï¿½,
 	 * o valor do fluxo da massa do ar em kg/h.
 	 * 
 	 * @return o valor do fluxo da massa do ar em kg/h.

@@ -1,37 +1,37 @@
 package com.google.sites.danieltcc1.model;
 
 /**
- * Classe que define o motor universal. Assim, também define a frequência de
- * rotação dele.
+ * Classe que define o motor universal. Assim, tambï¿½m define a frequï¿½ncia de
+ * rotaï¿½ï¿½o dele.
  * 
  * @author Daniel S. F. Bruno
  * @version 1.0.1
- * @since versão 1.0b1
+ * @since versï¿½o 1.0b1
  */
 public class UniversalMotor {
 
-	// declaração e instanciação de variáveis.
+	// declaraï¿½ï¿½o e instanciaï¿½ï¿½o de variï¿½veis.
 	private double rotationFrequencyHz;
 	private static final double MAXIMUM_ROTATION_FREQUENCY_HZ = 585.0;
 	private static final double MINIMUM_ROTATION_FREQUENCY_HZ = 0.0;
 
 	/**
-	 * Este método fixa a frequência de rotação deste motor, isto é, o valor da
-	 * variável (do tipo double) rotation_frequency_Hz.
+	 * Este mï¿½todo fixa a frequï¿½ncia de rotaï¿½ï¿½o deste motor, isto ï¿½, o valor da
+	 * variï¿½vel (do tipo double) rotation_frequency_Hz.
 	 * 
 	 * @param rotationFrequency
 	 *            - uma constante (do tipo double) fornecida para fixar a
-	 *            variável rotation_frequency_Hz.
+	 *            variï¿½vel rotation_frequency_Hz.
 	 */
 	public void setRotationFrequency(double rotationFrequency) {
 		this.rotationFrequencyHz = Math.min(Math.max(rotationFrequency, MINIMUM_ROTATION_FREQUENCY_HZ), MAXIMUM_ROTATION_FREQUENCY_HZ);
 	}
 
 	/**
-	 * Este método retorna a frequência de rotação deste motor, isto é, o valor
-	 * da variável (do tipo double) rotation_frequency_Hz.
+	 * Este mï¿½todo retorna a frequï¿½ncia de rotaï¿½ï¿½o deste motor, isto ï¿½, o valor
+	 * da variï¿½vel (do tipo double) rotation_frequency_Hz.
 	 * 
-	 * @return o valor da variável (do tipo double) rotation_frequency_Hz.
+	 * @return o valor da variï¿½vel (do tipo double) rotation_frequency_Hz.
 	 */
 	public double getRotationFrequency() {
 		return this.rotationFrequencyHz;
