@@ -1,6 +1,9 @@
 package com.google.sites.danieltcc1.view;
 
 import javax.swing.*;
+
+import java.awt.Component;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,9 +13,6 @@ import org.jfree.ui.RefineryUtilities;
 
 public class View extends JFrame {
 
-	/**
-  * 
-  */
 	private static final long serialVersionUID = 1L;
 
 	// declaraï¿½ï¿½o de objetos e variï¿½veis.
@@ -56,19 +56,19 @@ public class View extends JFrame {
 
 	private JMenuBar menuBar;
 
-	private JMenu FileMenu;
-	private JMenuItem ExitCommand;
+	private JMenu fileMenu;
+	private JMenuItem exitCommand;
 
-	private JMenu ModelsMenu;
-	private JMenuItem Models[];
+	private JMenu modelsMenu;
+	private JMenuItem models[];
 
 	private JMenu optionMenu;
     private JMenu languageSetting;
     private JMenuItem enUsLang;
     private JMenuItem ptBrLang;
-	
-	private JMenu HelpMenu;
-	private JMenuItem AboutCommand;
+
+	private JMenu helpMenu;
+	private JMenuItem aboutCommand;
 
 	private JLabel chosenModel;
 
@@ -129,29 +129,30 @@ public class View extends JFrame {
 
 		menuBar = new JMenuBar();
 
-		FileMenu = new JMenu(messages.getString("file"));
-		ExitCommand = new JMenuItem(messages.getString("quit"));
-		ExitCommand.setActionCommand("ExitCommand");
-		FileMenu.add(ExitCommand);
+		fileMenu = new JMenu(messages.getString("file"));
+		exitCommand = new JMenuItem(messages.getString("quit"));
+		exitCommand.setActionCommand("ExitCommand");
+		fileMenu.add(exitCommand);
 
-		ModelsMenu = new JMenu();
-		Models = new JMenuItem[5];
+		modelsMenu = new JMenu();
+		models = new JMenuItem[5];
 		for (int i = 1; i < 6; i++) {
-			Models[i - 1] = new JMenuItem();
-			ModelsMenu.add(Models[i - 1]);
-			Models[i - 1].setActionCommand("Models" + i);
+			models[i - 1] = new JMenuItem();
+			modelsMenu.add(models[i - 1]);
+			models[i - 1].setActionCommand("Models" + i);
+			models[i - 1].setFont(new Font("Arial", Font.PLAIN, 12));
 		}
 
-		HelpMenu = new JMenu();
-		AboutCommand = new JMenuItem(messages.getString("about"));
-		AboutCommand.setActionCommand("AboutCommand");
-		HelpMenu.add(AboutCommand);
+		helpMenu = new JMenu();
+		aboutCommand = new JMenuItem(messages.getString("about"));
+		aboutCommand.setActionCommand("AboutCommand");
+		helpMenu.add(aboutCommand);
 
 		optionMenu = new JMenu("Options");
         languageSetting = new JMenu("Language");
         optionMenu.add(languageSetting);
         enUsLang = new JMenuItem("English");
-        ptBrLang = new JMenuItem("Português do Brasil");
+        ptBrLang = new JMenuItem("Portuguï¿½s do Brasil");
         languageSetting.add(enUsLang);
         languageSetting.add(ptBrLang);
         enUsLang.addActionListener(new ActionListener() {
@@ -187,7 +188,7 @@ public class View extends JFrame {
 			}
         	
         });
-		
+
 		responseLabel1.setHorizontalAlignment(JTextField.RIGHT);
 		responseLabel2.setHorizontalAlignment(JTextField.RIGHT);
 		responseLabel3.setHorizontalAlignment(JTextField.RIGHT);
@@ -213,6 +214,7 @@ public class View extends JFrame {
 				messages.getString("change_the_ambient_air_temperature"));
 		stop_sim = new JButton(
 				messages.getString("stop_the_simulation_and_quit_this_app"));
+		stop_sim.setFont(new Font("Arial", Font.BOLD, 12));
 		restart_sim = new JButton(messages.getString("restart_the_simulation"));
 		dyn_press = new JButton(
 				messages.getString("plot_the_transient_response_of_the_intake_air_pressure"));
@@ -248,10 +250,27 @@ public class View extends JFrame {
 		windowContent.add(restart_sim);
 		windowContent.add(chosenModel);
 
-		menuBar.add(FileMenu);
-		menuBar.add(ModelsMenu);
+		menuBar.add(fileMenu);
+		menuBar.add(modelsMenu);
 		menuBar.add(optionMenu);
-		menuBar.add(HelpMenu);
+		menuBar.add(helpMenu);
+
+		Component[] elements = {label1, responseLabel1, label2,
+				responseLabel2, label3, responseLabel3, label4,
+				responseLabel4, label5, responseLabel5, label6,
+				responseLabel6, label7, responseLabel7, label8,
+				responseLabel8, label9, responseLabel9, label10,
+				responseLabel10, mu_freq, etm_factor, dyn_press,
+				dyn_amf, stop_sim, restart_sim, chosenModel,
+				fileMenu, modelsMenu, optionMenu, helpMenu,
+				air_pressure, air_volum, air_molar_mass,
+				air_temperature, dyn_press, exitCommand,
+				aboutCommand, languageSetting, enUsLang,
+				ptBrLang};
+
+		for (Component element : elements) {
+			element.setFont(new Font("Arial", Font.PLAIN, 12));
+		}
 
 		mu_freq.setActionCommand("mu_freq");
 		etm_factor.setActionCommand("etm_factor");
@@ -272,7 +291,7 @@ public class View extends JFrame {
 				+ messages.getString("the_simulation_was_started"));
 		info = messages.getString("info");
 		label1.setText(messages.getString("ambient_air_pressure_kpa_gui"));
-		ModelsMenu.setText(messages.getString("choose_a_model"));
+		modelsMenu.setText(messages.getString("choose_a_model"));
 		
 		for (int i = 1; i < 6; i++) {
 			String label = " " +
@@ -302,11 +321,11 @@ public class View extends JFrame {
 				label = "Unknown option!";
 				break;
 			}
-			Models[i - 1].setText(label);
+			models[i - 1].setText(label);
 		}
-		HelpMenu.setText(messages.getString("help"));
+		helpMenu.setText(messages.getString("help"));
 	}
-	
+
 	/**
 	 * This method initializes this
 	 * 
@@ -362,11 +381,11 @@ public class View extends JFrame {
 		dyn_press.addActionListener(listener);
 		dyn_amf.addActionListener(listener);
 
-		ExitCommand.addActionListener(listener);
+		exitCommand.addActionListener(listener);
 		for (int i = 1; i < 6; i++) {
-			Models[i - 1].addActionListener(listener);
+			models[i - 1].addActionListener(listener);
 		}
-		AboutCommand.addActionListener(listener);
+		aboutCommand.addActionListener(listener);
 	}
 
 	public void showMessage(String message) {
