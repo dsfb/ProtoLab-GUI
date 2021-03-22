@@ -15,8 +15,6 @@ public class Control implements ActionListener {
     private Air air; // environmental air
     private Air internalAir;
 
-	private int modelChoice;
-
 	private int execution;
 	
 	private double openingFactorElectronicThrottle;
@@ -32,15 +30,11 @@ public class Control implements ActionListener {
 		view.configureListener(this);
 		air = new Air();
 		internalAir = new Air();
-		prototype = new Prototype();
 
 		this.setOpeningFactor(MINOPENINGFACTOR);
 		this.setRotationFrequency(MINROTATIONHZ);
 
 		modelManager = new ModelManager();
-
-		// fixacao de valor.
-		modelChoice = -1;
 
 		// chamada do metodo reinicia().
 		restart();
@@ -73,33 +67,33 @@ public class Control implements ActionListener {
 		this.setRotationFrequency(0);
 		this.setOpeningFactor(0);
 
-		prototype.getModel_map().setInput1(0);
-		prototype.getModel_map().setInput2(0);
-		prototype.getModel_map().setPressure_kPa(94.99);
-		prototype.getModel_map().setVolum_L(0.53751);
-		prototype.getModel_map().setMolar_mass_g_mol(28.96);
-		prototype.getModel_map().setTemperature_k(300);
-		prototype.getModel_map().setOutput();
+		this.modelManager.getModel_map().setInput1(0);
+		this.modelManager.getModel_map().setInput2(0);
+		this.modelManager.getModel_map().setPressure_kPa(94.99);
+		this.modelManager.getModel_map().setVolum_L(0.53751);
+		this.modelManager.getModel_map().setMolar_mass_g_mol(28.96);
+		this.modelManager.getModel_map().setTemperature_k(300);
+		this.modelManager.getModel_map().setOutput();
 
-		air.setPressure_kPa(prototype.getModel_map().getPressure_kPa());
+		air.setPressure_kPa(this.modelManager.getModel_map().getPressure_kPa());
 		air.setTemperatureKelvin(300);
-		air.setVolum_liters(prototype.getModel_map().getVolum_L());
+		air.setVolum_liters(this.modelManager.getModel_map().getVolum_L());
 		air.setAir_molar_mass_g_mol(
-				prototype.getModel_map().getMolar_mass_g_mol());
+				this.modelManager.getModel_map().getMolar_mass_g_mol());
 
 		internalAir
 				.setTemperatureKelvin(air.getTemperatureKelvin());
 		internalAir
 				.setPressure_kPa(air.getPressure_kPa());
 		internalAir
-				.setVolum_liters(prototype.getModel_map().getVolum_L());
+				.setVolum_liters(this.modelManager.getModel_map().getVolum_L());
 		internalAir.setAir_molar_mass_g_mol(
-				prototype.getModel_map().getMolar_mass_g_mol());
+				this.modelManager.getModel_map().getMolar_mass_g_mol());
 
-		prototype.getModel_maf().setInput1(0);
-		prototype.getModel_maf().setInput2(0);
-		prototype.getModel_maf().setOutput();
-		air.setMass_flow_kg_h(prototype.getModel_maf().getOutput());
+		this.modelManager.getModel_maf().setInput1(0);
+		this.modelManager.getModel_maf().setInput2(0);
+		this.modelManager.getModel_maf().setOutput();
+		air.setMass_flow_kg_h(this.modelManager.getModel_maf().getOutput());
 		internalAir
 				.setMass_flow_kg_h(air.getMass_flow_kg_h());
 
@@ -145,24 +139,24 @@ public class Control implements ActionListener {
 
 		double field3, field4;
 
-		if (modelChoice == -1)
+		if (this.modelManager.getModelChoice() == -1)
 			this.view.showMessage(this.view.getMessage("please_choose_a_model_before_changing_any_parameters"));
 
 		// ajuste dos objetos para changer a frequ�ncia de rota��o do motor
 		// universal.
 		this.setRotationFrequency(rot_freq);
 
-		prototype.getModel_map().setInput1(rot_freq);
+		this.modelManager.getModel_map().setInput1(rot_freq);
 
-		prototype.getModel_map().setOutput();
+		this.modelManager.getModel_map().setOutput();
 
 		internalAir
-				.setPressure_kPa(prototype.getModel_map().getOutput());
+				.setPressure_kPa(this.modelManager.getModel_map().getOutput());
 
-		prototype.getModel_maf().setInput1(rot_freq);
-		prototype.getModel_maf().setOutput();
+		this.modelManager.getModel_maf().setInput1(rot_freq);
+		this.modelManager.getModel_maf().setOutput();
 		internalAir
-				.setMass_flow_kg_h(prototype.getModel_maf().getOutput());
+				.setMass_flow_kg_h(this.modelManager.getModel_maf().getOutput());
 
 		execution = execution + 1;
 
@@ -181,22 +175,22 @@ public class Control implements ActionListener {
 
 		double field3, field4;
 
-		if (modelChoice == -1)
+		if (this.modelManager.getModelChoice() == -1)
 			this.view.showMessage(this.view.getMessage("please_choose_a_model_before_changing_any_parameters"));
 
 		// ajuste dos objetos para changer o fator de abertura do m�dulo v�lvula
 		// borboleta.
 		this.setOpeningFactor(open_factor);
 
-		prototype.getModel_map().setInput2(open_factor);
-		prototype.getModel_map().setOutput();
+		this.modelManager.getModel_map().setInput2(open_factor);
+		this.modelManager.getModel_map().setOutput();
 		internalAir
-				.setPressure_kPa(prototype.getModel_map().getOutput());
+				.setPressure_kPa(this.modelManager.getModel_map().getOutput());
 
-		prototype.getModel_maf().setInput2(open_factor);
-		prototype.getModel_maf().setOutput();
+		this.modelManager.getModel_maf().setInput2(open_factor);
+		this.modelManager.getModel_maf().setOutput();
 		internalAir
-				.setMass_flow_kg_h(prototype.getModel_maf().getOutput());
+				.setMass_flow_kg_h(this.modelManager.getModel_maf().getOutput());
 
 		execution = execution + 1;
 
@@ -219,12 +213,12 @@ public class Control implements ActionListener {
 		double field3;
 
 		// ajuste dos objetos para changer a press�o do ar ambiente.
-		prototype.getModel_map().setPressure_kPa(air_pressure);
-		prototype.getModel_map().setOutput();
+		this.modelManager.getModel_map().setPressure_kPa(air_pressure);
+		this.modelManager.getModel_map().setOutput();
 		air.setPressure_kPa(air_pressure);
 
 		internalAir
-				.setPressure_kPa(prototype.getModel_map().getOutput());
+				.setPressure_kPa(this.modelManager.getModel_map().getOutput());
 
 		execution = execution + 1;
 
@@ -243,11 +237,11 @@ public class Control implements ActionListener {
 		double field3;
 
 		// ajuste dos objetos para changer o volume do ar admitido.
-		prototype.getModel_map().setVolum_L(air_volum);
-		prototype.getModel_map().setOutput();
+		this.modelManager.getModel_map().setVolum_L(air_volum);
+		this.modelManager.getModel_map().setOutput();
 
 		internalAir
-				.setPressure_kPa(prototype.getModel_map().getOutput());
+				.setPressure_kPa(this.modelManager.getModel_map().getOutput());
 
 		field3 = format(
 				internalAir.getPressure_kPa());
@@ -280,12 +274,12 @@ public class Control implements ActionListener {
 		double field3;
 
 		// ajuste dos objetos para changer a massa molar do ar ambiente.
-		prototype.getModel_map().setMolar_mass_g_mol(air_molar_mass);
-		prototype.getModel_map().setOutput();
+		this.modelManager.getModel_map().setMolar_mass_g_mol(air_molar_mass);
+		this.modelManager.getModel_map().setOutput();
 		air.setAir_molar_mass_g_mol(air_molar_mass);
 
 		internalAir
-				.setPressure_kPa(prototype.getModel_map().getOutput());
+				.setPressure_kPa(this.modelManager.getModel_map().getOutput());
 
 		internalAir
 				.setAir_molar_mass_g_mol(air_molar_mass);
@@ -307,12 +301,12 @@ public class Control implements ActionListener {
 		double field3;
 
 		// ajuste dos objetos para changer a temperatura do ar ambiente.
-		prototype.getModel_map().setTemperature_k(air_temperature);
-		prototype.getModel_map().setOutput();
+		this.modelManager.getModel_map().setTemperature_k(air_temperature);
+		this.modelManager.getModel_map().setOutput();
 		air.setTemperatureKelvin(air_temperature);
 
 		internalAir
-				.setPressure_kPa(prototype.getModel_map().getOutput());
+				.setPressure_kPa(this.modelManager.getModel_map().getOutput());
 
 		field3 = format(
 				internalAir.getPressure_kPa());
@@ -482,58 +476,58 @@ public class Control implements ActionListener {
 		// eventos de escolha de modelos.
 		else if (e.getActionCommand().equals("Models1")) {
 
-			if (modelChoice > 0)
+			if (this.modelManager.getModelChoice() > 0)
 				this.view.retiracomponentes();
-			modelChoice = 0;
+			this.modelManager.setModelChoice(0);
 
 			this.view.eventModel0();
 
-			prototype.build_model_map(modelChoice);
-			prototype.buildMafModel(modelChoice);
+			this.modelManager.build_model_map(this.modelManager.getModelChoice());
+			this.modelManager.buildMafModel(this.modelManager.getModelChoice());
 			restart();
 		} else if (e.getActionCommand().equals("Models2")) {
 
-			if (modelChoice <= 0)
+			if (this.modelManager.getModelChoice() <= 0)
 				this.view.adicionacomponentes();
-			modelChoice = 1;
+			this.modelManager.setModelChoice(1);
 
 			this.view.eventModel1();
 
-			prototype.build_model_map(modelChoice);
-			prototype.buildMafModel(modelChoice);
+			this.modelManager.build_model_map(this.modelManager.getModelChoice());
+			this.modelManager.buildMafModel(this.modelManager.getModelChoice());
 			restart();
 		} else if (e.getActionCommand().equals("Models3")) {
 
-			if (modelChoice <= 0)
+			if (this.modelManager.getModelChoice() <= 0)
 				this.view.adicionacomponentes();
-			modelChoice = 2;
+			this.modelManager.setModelChoice(2);
 
 			this.view.eventModel2();
 
-			prototype.build_model_map(modelChoice);
-			prototype.buildMafModel(modelChoice);
+			this.modelManager.build_model_map(this.modelManager.getModelChoice());
+			this.modelManager.buildMafModel(this.modelManager.getModelChoice());
 			restart();
 		} else if (e.getActionCommand().equals("Models4")) {
 
-			if (modelChoice <= 0)
+			if (this.modelManager.getModelChoice() <= 0)
 				this.view.adicionacomponentes();
-			modelChoice = 3;
+			this.modelManager.setModelChoice(3);
 
 			this.view.eventModel3();
 
-			prototype.build_model_map(modelChoice);
-			prototype.buildMafModel(modelChoice);
+			this.modelManager.build_model_map(this.modelManager.getModelChoice());
+			this.modelManager.buildMafModel(this.modelManager.getModelChoice());
 			restart();
 		} else if (e.getActionCommand().equals("Models5")) {
 
-			if (modelChoice <= 0)
+			if (this.modelManager.getModelChoice() <= 0)
 				this.view.adicionacomponentes();
-			modelChoice = 4;
+			this.modelManager.setModelChoice(4);
 
 			this.view.eventModel4();
 
-			prototype.build_model_map(modelChoice);
-			prototype.buildMafModel(modelChoice);
+			this.modelManager.build_model_map(this.modelManager.getModelChoice());
+			this.modelManager.buildMafModel(this.modelManager.getModelChoice());
 			restart();
 		}
 		// evento sobre o comando de ajuda.
