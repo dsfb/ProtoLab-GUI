@@ -7,9 +7,10 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 import org.jfree.ui.RefineryUtilities;
+
+import com.google.sites.danieltcc1.view.defined.Button;
 
 public class View extends JFrame {
 
@@ -48,7 +49,7 @@ public class View extends JFrame {
 	private JButton air_molar_mass;
 	private JButton air_temperature;
 	private JButton stop_sim;
-	private JButton restart_sim;
+	private Button restart_sim;
 	private JButton dyn_press;
 	private JButton dyn_amf;
 
@@ -212,10 +213,10 @@ public class View extends JFrame {
 				messages.getString("change_the_ambient_air_molar_mass"));
 		air_temperature = new JButton(
 				messages.getString("change_the_ambient_air_temperature"));
-		stop_sim = new JButton(
+		stop_sim = new Button(
 				messages.getString("stop_the_simulation_and_quit_this_app"));
 		stop_sim.setFont(new Font("Arial", Font.BOLD, 12));
-		restart_sim = new JButton(messages.getString("restart_the_simulation"));
+		restart_sim = new Button(messages.getString("restart_the_simulation"));
 		dyn_press = new JButton(
 				messages.getString("plot_the_transient_response_of_the_intake_air_pressure"));
 		dyn_amf = new JButton(
